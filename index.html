@@ -1,242 +1,1012 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Undangan Metatah</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Mepandes - Dewa Yadnya & Manusa Yadnya</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #dfac40;
+            --gold-light: #ffd778;
+            --gold-glow: rgba(223, 172, 64, 0.4);
+            --bg-dark: #0a0708;
+            --bg-card: rgba(22, 16, 18, 0.65);
+            --text-light: #f3ece0;
+            --maroon: #4a0e17;
+        }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-body{
-  font-family:Poppins,sans-serif;
-  background:#f8f6f1;
-  color:#3f3528;
-}
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-.container{
-  max-width:620px;
-  margin:auto;
-  padding:40px 22px 60px;
-}
+        /* Background Animated Canvas */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
 
-.card{
-  position:relative;
-  background:white;
-  border-radius:22px;
-  padding:42px 28px;
-  box-shadow:0 8px 30px rgba(0,0,0,.06);
-  border:1px solid #e2d7c5;
-  overflow:hidden;
-}
+        /* Typography */
+        h1, h2, h3, .balinese-font {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+        }
 
-/* Background Watermark Ongkara Bali */
-.bg-ongkara{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  font-size:280px;
-  font-family:'Cormorant Garamond',serif;
-  color:#b58a3c;
-  opacity:0.04;
-  pointer-events:none;
-  user-select:none;
-  z-index:0;
-  line-height:1;
-}
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fff 0%, var(--gold-light) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px var(--gold-glow);
+        }
 
-.content{
-  position:relative;
-  z-index:1;
-}
+        /* Container & Glassmorphism Card */
+        .wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-.center{text-align:center}
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(223, 172, 64, 0.25);
+            border-radius: 20px;
+            padding: 40px 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(223, 172, 64, 0.05);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
 
-.ornamen{
-  width:100px;
-  margin:0 auto 20px;
-  display:block;
-  opacity:.85;
-}
+        .glass-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-.om{
-  font-size:48px;
-  color:#b58a3c;
-  line-height:1;
-  margin-bottom:8px;
-  font-family:'Cormorant Garamond',serif;
-}
+        /* Decorative Balinese Border Effects */
+        .ornament {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin: 15px 0;
+            opacity: 0.8;
+            filter: drop-shadow(0 0 8px var(--gold));
+        }
 
-h1{
-  font-family:"Cormorant Garamond",serif;
-  font-size:34px;
-  color:#6b4f1d;
-  margin:8px 0;
-}
+        /* Cover Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
 
-h2{
-  font-family:"Cormorant Garamond",serif;
-  font-size:26px;
-  color:#6b4f1d;
-  margin:34px 0 12px;
-}
+        .mantra {
+            font-size: 1.2rem;
+            color: var(--gold-light);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
 
-p{
-  line-height:1.9;
-}
+        .sub-mantra {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
 
-.names{
-  list-style:none;
-  margin:24px 0;
-}
+        .title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
 
-.names li{
-  padding:6px 0;
-  text-align:center;
-  font-size:18px;
-  color:#6b4f1d;
-}
+        .subtitle {
+            font-size: 1rem;
+            color: var(--gold-light);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
 
-.info{
-  margin:22px 0;
-}
+        /* Names Grid */
+        .names-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
 
-.info div{
-  padding:12px 0;
-  border-bottom:1px solid #eee5d5;
-}
+        @media(min-width: 600px) {
+            .names-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
 
-.btn{
-  display:inline-block;
-  margin-top:22px;
-  padding:12px 28px;
-  border:1px solid #b58a3c;
-  border-radius:999px;
-  color:#6b4f1d;
-  text-decoration:none;
-  font-weight:500;
-  transition:.25s;
-}
+        .name-card {
+            background: rgba(223, 172, 64, 0.05);
+            border: 1px solid rgba(223, 172, 64, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
 
-.btn:hover{
-  background:#b58a3c;
-  color:white;
-}
+        .name-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 5px 20px var(--gold-glow);
+        }
 
-.fade{
-  opacity:0;
-  transform:translateY(20px);
-  transition:.8s ease;
-}
+        .name-card h3 {
+            font-size: 1.1rem;
+            color: var(--gold-light);
+        }
 
-.fade.show{
-  opacity:1;
-  transform:none;
-}
-</style>
+        /* Parents Info */
+        .parents {
+            margin-top: 25px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            border-top: 1px dashed rgba(223, 172, 64, 0.3);
+            padding-top: 20px;
+        }
+
+        .parents span {
+            color: var(--gold-light);
+            font-weight: 600;
+        }
+
+        /* Event Details */
+        .event-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .info-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 3px solid var(--gold);
+        }
+
+        .info-box i {
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+
+        /* Countdown Futuristic */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .time-block {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--gold);
+            padding: 10px 15px;
+            border-radius: 8px;
+            min-width: 70px;
+            box-shadow: 0 0 10px var(--gold-glow);
+        }
+
+        .time-block span {
+            display: block;
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gold-light);
+        }
+
+        .time-block label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+
+        /* Futuristic Glowing Buttons */
+        .btn-futuristic {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(45deg, var(--maroon), #2a080d);
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border: 1px solid var(--gold);
+            box-shadow: 0 0 15px var(--gold-glow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .btn-futuristic:hover {
+            background: var(--gold);
+            color: var(--bg-dark);
+            box-shadow: 0 0 25px var(--gold-light);
+            transform: scale(1.05);
+        }
+
+        /* Music Floating Toggle */
+        .music-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--bg-card);
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--gold);
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 99;
+            box-shadow: 0 0 15px var(--gold-glow);
+            transition: transform 0.3s;
+        }
+
+        .music-btn.playing {
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+    </style>
 </head>
 <body>
 
-<div class="container">
+    <!-- Canvas Partikel Futuristik -->
+    <canvas id="particles-canvas"></canvas>
 
-<div class="card">
-  <!-- Watermark Ongkara di Background -->
-  <div class="bg-ongkara">ᬁ</div>
+    <!-- Tombol Musik -->
+    <div class="music-btn" id="musicBtn" onclick="toggleMusic()">
+        <i class="fa-solid fa-music"></i>
+    </div>
+    <!-- Musik Latar (Instrumen Bali / Suasana) -->
+    <audio id="bgMusic" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=meditation-gong-112188.mp3"></audio>
 
-  <div class="content">
+    <div class="wrapper">
+        <!-- Section 1: Hero / Header -->
+        <section class="hero-section">
+            <div class="glass-card visible">
+                <div class="ornament"><i class="fa-solid fa-om"></i></div>
+                <div class="mantra">Om Swastyastu</div>
+                <p class="sub-mantra">
+                    Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa, kami bermaksud menyelenggarakan Upacara Manusa Yadnya Mepandes (Potong Gigi) putra-putri kami.
+                </p>
+                <div class="ornament">❖ ❖ ❖</div>
+                <h1 class="title gold-gradient-text">UPACARA MEPANDES</h1>
+                <div class="subtitle">Potong Gigi</div>
+            </div>
+        </section>
 
-    <!-- Ukiran Bali Atas -->
-    <svg class="ornamen" viewBox="0 0 100 40">
-      <path d="M5 20 Q20 5 35 20 T65 20 T95 20" stroke="#b58a3c" stroke-width="2" fill="none"/>
-      <circle cx="50" cy="20" r="3" fill="#b58a3c"/>
-    </svg>
+        <!-- Section 2: Yang Memohon Doa Restu -->
+        <section>
+            <div class="glass-card">
+                <h2 class="gold-gradient-text" style="font-size: 1.5rem; margin-bottom: 20px;">Putra - Putri Kami</h2>
+                
+                <div class="names-grid">
+                    <div class="name-card">
+                        <h3>NI KADEK WIWIK ASTUTIARI</h3>
+                    </div>
+                    <div class="name-card">
+                        <h3>NI KOMANG APRIANTI</h3>
+                    </div>
+                    <div class="name-card">
+                        <h3>I KETUT PANDE ADI PUTRA</h3>
+                    </div>
+                    <div class="name-card">
+                        <h3>I GEDE PANDE WIRAGUNA</h3>
+                    </div>
+                </div>
 
-    <div class="center fade">
-      <div class="om">ᬁ</div>
-      <h1>Om Swastyastu</h1>
+                <div class="parents">
+                    Putra - Putri dari Pasangan:<br>
+                    <span>I NYOMAN SADRA & NI LUH SULATRI</span>
+                </div>
+            </div>
+        </section>
 
-      <p style="margin-top:18px;">
-        Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa,
-        kami mengundang Bapak/Ibu/Saudara/i untuk berkenan hadir
-        dalam Upacara Manusa Yadnya Metatah (Potong Gigi) Putra & Putri kami.
-      </p>
+        <!-- Section 3: Waktu & Lokasi -->
+        <section>
+            <div class="glass-card">
+                <h2 class="gold-gradient-text" style="font-size: 1.5rem; margin-bottom: 10px;">Waktu & Lokasi</h2>
+                <div class="ornament"><i class="fa-regular fa-calendar-check"></i></div>
+
+                <div class="event-info">
+                    <div class="info-box">
+                        <i class="fa-solid fa-calendar-day"></i>
+                        <div>
+                            <strong>Selasa, 15 September 2026</strong>
+                        </div>
+                    </div>
+                    <div class="info-box">
+                        <i class="fa-solid fa-clock"></i>
+                        <div>
+                            <strong>16:00 WITA – Selesai</strong>
+                        </div>
+                    </div>
+                    <div class="info-box">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            Br. Bengkel Antiga Kelod Gg. Nagasari
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Countdown Timer -->
+                <div class="countdown" id="countdown">
+                    <div class="time-block"><span id="days">00</span><label>Hari</label></div>
+                    <div class="time-block"><span id="hours">00</span><label>Jam</label></div>
+                    <div class="time-block"><span id="minutes">00</span><label>Menit</label></div>
+                    <div class="time-block"><span id="seconds">00</span><label>Detik</label></div>
+                </div>
+
+                <!-- Google Maps Link -->
+                <a href="https://maps.google.com/?q=Br.+Bengkel+Antiga+Kelod+Gg.+Nagasari" target="_blank" class="btn-futuristic">
+                    <i class="fa-solid fa-map-location-dot"></i> Buka Google Maps
+                </a>
+            </div>
+        </section>
+
+        <!-- Section 4: Penutup -->
+        <section>
+            <div class="glass-card">
+                <p style="line-height: 1.8; font-size: 1rem;">
+                    Merupakan suatu kebahagiaan & kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir memberikan doa restu.
+                </p>
+                <div class="ornament" style="margin-top: 25px;">❖ ❖ ❖</div>
+                <div class="mantra" style="margin-top: 15px;">Om Shanti, Shanti, Shanti Om</div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Undangan Digital Mepandes. Crafted with Harmony & Innovation.</p>
+        </footer>
     </div>
 
-    <ul class="names">
-      <li class="fade"><strong>Ni Kadek Wiwik Astutiari</strong></li>
-      <li class="fade"><strong>Ni Komang Aprianti</strong></li>
-      <li class="fade"><strong>I Ketut Pande Adi Putra</strong></li>
-      <li class="fade"><strong>I Gede Pande Wiraguna</strong></li>
-    </ul>
+    <!-- Script Animasi & Interaktivitas -->
+    <script>
+        /* 1. Canvas Partikel Emas Futuristik */
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particlesArray = [];
 
-    <div class="center fade">
-      <p style="font-size:14px;color:#7c6743;">Anak dari:</p>
-      <p style="font-weight:600;">I Made XXXX & Ni Nyoman XXXX</p>
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.color = '#dfac40';
+                this.opacity = Math.random() * 0.6 + 0.2;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(223, 172, 64, ${this.opacity})`;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = '#dfac40';
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            const count = Math.floor((canvas.width * canvas.height) / 15000);
+            for (let i = 0; i < count; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+        initParticles();
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particlesArray.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        /* 2. Intersection Observer untuk Scroll Animation Smooth */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.glass-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        /* 3. Countdown Timer Futuristik */
+        const eventDate = new Date("September 15, 2026 16:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "Acara Telah Berlangsung";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);Om Swastyastu.
+
+Berikut adalah kode HTML, CSS, dan JavaScript lengkap untuk web undangan digital **Mepandes (Potong Gigi)**. Desain ini mengombinasikan nuansa **klasik Bali** (elegan dengan warna emas, hitam, dan ukiran khas) dengan gaya **futuristis** (efek *glow*, partikel bergerak/bintang, *glassmorphism*, serta animasi *smooth scroll* dan transisi).
+
+Anda bisa langsung menyalin seluruh kode di bawah ini dan menyimpannya ke dalam satu file berformat `.html` (misalnya `undangan.html`), lalu membukanya di browser HP maupun laptop.
+
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Manusa Yadnya Mepandes</title>
+    <!-- Google Fonts -->
+    <link href="[https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap](https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap)" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)">
+    
+    <style>
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #FFDF00;
+            --gold-glow: rgba(212, 175, 55, 0.4);
+            --bg-dark: #08080a;
+            --card-bg: rgba(20, 20, 28, 0.65);
+            --text-light: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Canvas Background Effect */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Audio Control Button */
+        .audio-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid var(--gold-primary);
+            color: var(--gold-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 99;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px var(--gold-glow);
+            transition: all 0.3s ease;
+        }
+
+        .audio-btn:hover {
+            transform: scale(1.1);
+            background: var(--gold-primary);
+            color: #000;
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header / Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 40px 20px;
+        }
+
+        .balinese-symbol {
+            font-size: 3rem;
+            color: var(--gold-primary);
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px var(--gold-glow);
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        .mantra {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px var(--gold-glow);
+        }
+
+        .title-sub {
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #a0a0a0;
+            margin-bottom: 10px;
+        }
+
+        .title-main {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFF 0%, var(--gold-primary) 50%, #B38728 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .intro-text {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #ccc;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        /* Section Cards Futuristic-Classic */
+        .card-futuristic {
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 20px;
+            padding: 35px 25px;
+            margin: 40px 0;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(212, 175, 55, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+
+        .card-futuristic:hover {
+            border-color: var(--gold-primary);
+            transform: translateY(-5px);
+        }
+
+        .card-futuristic::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: 0.8s;
+        }
+
+        .card-futuristic:hover::before {
+            left: 100%;
+        }
+
+        .section-header {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold-primary);
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-header::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--gold-primary);
+            margin: 10px auto 0;
+            box-shadow: 0 0 8px var(--gold-primary);
+        }
+
+        /* Candidates / Putra-Putri Grid */
+        .grid-names {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .name-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .name-card:hover {
+            background: rgba(212, 175, 55, 0.08);
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .name-card h3 {
+            font-family: 'Cinzel', serif;
+            color: #fff;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .parents-info {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px dashed rgba(212, 175, 55, 0.3);
+            font-size: 0.95rem;
+            color: #bbb;
+        }
+
+        .parents-info strong {
+            color: var(--gold-primary);
+        }
+
+        /* Event Details */
+        .event-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            text-align: center;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.05rem;
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--gold-primary);
+            text-shadow: 0 0 10px var(--gold-glow);
+        }
+
+        .btn-location {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 25px;
+            padding: 12px 30px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, var(--gold-primary), #997A15);
+            color: #000;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 0 20px var(--gold-glow);
+            transition: all 0.3s ease;
+        }
+
+        .btn-location:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px var(--gold-primary);
+            background: linear-gradient(135deg, #FFDF00, var(--gold-primary));
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .footer .mantra-end {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-primary);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px var(--gold-glow);
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.08); }
+        }
+
+        /* Fade In Animation on Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Particle Effect Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Audio Player (Opsional Backsound) -->
+    <div class="audio-btn" id="audioBtn" onclick="toggleAudio()">
+        <i class="fas fa-music"></i>
+    </div>
+    <!-- Ganti URL MP3 di bawah ini dengan audio instrumental Bali favorit Anda -->
+    <audio id="bgAudio" loop>
+        <source src="[https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=meditation-gamelan-112191.mp3](https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=meditation-gamelan-112191.mp3)" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="balinese-symbol">ᬒᬵ</div>
+            <div class="mantra">Om Swastyastu</div>
+            <div class="title-sub">UNDANGAN MANUSA YADNYA</div>
+            <h1 class="title-main">Mepandes / Potong Gigi</h1>
+            <p class="intro-text">
+                Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa, kami bermaksud menyelenggarakan Upacara Manusa Yadnya Mepandes (Potong Gigi) untuk putra-putri kami.
+            </p>
+            <a href="#detail" class="btn-location" style="background: transparent; border: 1px solid var(--gold-primary); color: var(--gold-primary);">
+                <i class="fas fa-chevron-down"></i> Detail Acara
+            </a>
+        </section>
+
+        <!-- Putra - Putri Section -->
+        <section class="card-futuristic reveal">
+            <h2 class="section-header">Putra - Putri Kami</h2>
+            <div class="grid-names">
+                <div class="name-card">
+                    <h3>NI KADEK WIWIK ASTUTIARI</h3>
+                </div>
+                <div class="name-card">
+                    <h3>NI KOMANG APRIANTI</h3>
+                </div>
+                <div class="name-card">
+                    <h3>I KETUT PANDE ADI PUTRA</h3>
+                </div>
+                <div class="name-card">
+                    <h3>I GEDE PANDE WIRAGUNA</h3>
+                </div>
+            </div>
+            
+            <div class="parents-info">
+                Putra-putri dari Pasangan:<br>
+                <strong>I NYOMAN SADRA & NI LUH SULATRI</strong>
+            </div>
+        </section>
+
+        <!-- Event Details Section -->
+        <section id="detail" class="card-futuristic reveal">
+            <h2 class="section-header">Waktu & Lokasi</h2>
+            <div class="event-info">
+                <div class="info-item">
+                    <i class="far fa-calendar-alt"></i>
+                    <span><strong>Selasa, 15 September 2026</strong></span>
+                </div>
+                <div class="info-item">
+                    <i class="far fa-clock"></i>
+                    <span>16:00 WITA – Selesai</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Br. Bengkel Antiga Kelod Gg. Nagasari</span>
+                </div>
+                
+                <!-- Tombol Google Maps -->
+                <a href="[https://maps.google.com/?q=Br.+Bengkel+Antiga+Kelod+Gg.+Nagasari](https://maps.google.com/?q=Br.+Bengkel+Antiga+Kelod+Gg.+Nagasari)" target="_blank" class="btn-location">
+                    <i class="fas fa-map-marked-alt"></i> Buka Google Maps
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer / Closing -->
+        <footer class="footer reveal">
+            <p style="margin-bottom: 20px;">
+                Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir memberikan doa restu. Terima kasih.
+            </p>
+            <div class="mantra-end">Om Shanti, Shanti, Shanti Om</div>
+        </footer>
+
     </div>
 
-    <h2 class="center fade">Bhagavad Gita 3:11</h2>
+    <!-- Interactive Scripts -->
+    <script>
+        /* Smooth Scroll & Scroll Reveal */
+        window.addEventListener('scroll', reveal);
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var revealTop = reveals[i].getBoundingClientRect().top;
+                var revealPoint = 100;
+                if (revealTop < windowHeight - revealPoint) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        reveal(); // Init on load
 
-    <p class="center fade" style="font-style:italic;color:#7c6743;">
-      "Devan bhavayatanena te deva bhavayantu vah parasparam bhavayantah sreyah param avapsyatha."
-    </p>
+        /* Audio Controls */
+        var audio = document.getElementById("bgAudio");
+        var audioBtn = document.getElementById("audioBtn");
+        var isPlaying = false;
 
-    <p class="center fade" style="margin-top:12px;font-size:14px;">
-      Dengan yadnya, manusia memuliakan Hyang Widhi, dan melalui keharmonisan akan tercapai kebaikan yang utama.
-    </p>
+        function toggleAudio() {
+            if (isPlaying) {
+                audio.pause();
+                audioBtn.innerHTML = '<i class="fas fa-music"></i>';
+            } else {
+                audio.play();
+                audioBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+            isPlaying = !isPlaying;
+        }
 
-    <h2 class="center fade">Waktu & Tempat</h2>
+        /* Futuristic Background Canvas (Golden Dust/Particles) */
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
 
-    <div class="info fade center">
-      <div><strong>Hari / Tanggal</strong><br>[Isi Hari & Tanggal]</div>
-      <div><strong>Pukul</strong><br>[Isi Jam]</div>
-      <div><strong>Tempat</strong><br>Banjar Bengkel Gang Nagasari, Desa Antiga</div>
-    </div>
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
 
-    <div class="center fade">
-      <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Banjar+Bengkel+Gang+Nagasari+Desa+Antiga+Bali" target="_blank">
-        📍 Menuju Lokasi
-      </a>
-    </div>
+        const particles = [];
+        const particleCount = 60;
 
-    <div class="center fade" style="margin-top:40px;">
-      <p>
-        Merupakan suatu kebahagiaan dan kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.
-      </p>
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.opacity = Math.random() * 0.8 + 0.2;
+            }
 
-      <p style="margin-top:18px;">
-        Atas kehadiran dan doa restunya kami ucapkan terima kasih.
-      </p>
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
 
-      <p style="margin-top:24px;font-family:'Cormorant Garamond',serif;font-size:24px;color:#6b4f1d;">
-        Om Shanti Shanti Shanti Om
-      </p>
-    </div>
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.y < 0) this.y = canvas.height;
+                if (this.y > canvas.height) this.y = 0;
+            }
 
-    <!-- Ukiran Bali Bawah -->
-    <svg class="ornamen" viewBox="0 0 100 40" style="margin-top:28px;transform:rotate(180deg);">
-      <path d="M5 20 Q20 5 35 20 T65 20 T95 20" stroke="#b58a3c" stroke-width="2" fill="none"/>
-      <circle cx="50" cy="20" r="3" fill="#b58a3c"/>
-    </svg>
+            draw() {
+                ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
 
-  </div>
-</div>
+        function initParticles() {
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
 
-</div>
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
 
-<script>
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting) e.target.classList.add("show");
-  });
-}, {threshold: .15});
-
-document.querySelectorAll(".fade").forEach(el => observer.observe(el));
-</script>
-
+        initParticles();
+        animateParticles();
+    </script>
 </body>
 </html>
