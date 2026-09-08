@@ -1,399 +1,242 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Metatah</title>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary-color: #5C3A21;
-            --gold-color: #D4AF37;
-            --gold-light: #F3E5AB;
-            --bg-color: #F8F5F0;
-            --card-bg: #FFFFFF;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Undangan Metatah</title>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-color);
-            color: #333333;
-            line-height: 1.6;
-            padding: 20px 10px;
-            overflow-x: hidden;
-        }
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 
-        /* Container Card Utama */
-        .container {
-            position: relative;
-            max-width: 580px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            padding: 40px 25px;
-            border-radius: 16px;
-            box-shadow: 0 15px 35px rgba(92, 58, 33, 0.12);
-            border: 2px solid var(--gold-color);
-            text-align: center;
-            overflow: hidden;
-        }
+body{
+  font-family:Poppins,sans-serif;
+  background:#f8f6f1;
+  color:#3f3528;
+}
 
-        /* Watermark Ongkara Bali di Background Tengah (Samar & Bebas Watermark) */
-        .bg-ongkara-watermark {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 320px;
-            height: 320px;
-            opacity: 0.05; /* Mengatur transparansi latar belakang */
-            pointer-events: none;
-            z-index: 0;
-        }
+.container{
+  max-width:620px;
+  margin:auto;
+  padding:40px 22px 60px;
+}
 
-        /* Content Wrapper agar berada di atas Watermark */
-        .content-wrapper {
-            position: relative;
-            z-index: 1;
-        }
+.card{
+  position:relative;
+  background:white;
+  border-radius:22px;
+  padding:42px 28px;
+  box-shadow:0 8px 30px rgba(0,0,0,.06);
+  border:1px solid #e2d7c5;
+  overflow:hidden;
+}
 
-        /* Header & Footer Ornamen Ukiran Emas */
-        .ornament-header, .ornament-footer {
-            width: 100%;
-            max-width: 380px;
-            margin: 0 auto;
-            display: block;
-        }
+/* Background Watermark Ongkara Bali */
+.bg-ongkara{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:280px;
+  font-family:'Cormorant Garamond',serif;
+  color:#b58a3c;
+  opacity:0.04;
+  pointer-events:none;
+  user-select:none;
+  z-index:0;
+  line-height:1;
+}
 
-        .ornament-header {
-            margin-bottom: 20px;
-        }
+.content{
+  position:relative;
+  z-index:1;
+}
 
-        .ornament-footer {
-            margin-top: 25px;
-            transform: rotate(180deg); /* Dibalik untuk bagian bawah */
-        }
+.center{text-align:center}
 
-        /* Logo Mandala Ongkara Utama di Atas */
-        .ongkara-logo {
-            width: 110px;
-            height: 110px;
-            margin: 0 auto 15px auto;
-            display: block;
-        }
+.ornamen{
+  width:100px;
+  margin:0 auto 20px;
+  display:block;
+  opacity:.85;
+}
 
-        /* Animasi Kustom: Smooth Slide-Up & Zoom-In */
-        .smooth-animate {
-            opacity: 0;
-            transform: translateY(45px) scale(0.9);
-            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform, opacity;
-        }
+.om{
+  font-size:48px;
+  color:#b58a3c;
+  line-height:1;
+  margin-bottom:8px;
+  font-family:'Cormorant Garamond',serif;
+}
 
-        .smooth-animate.show {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
+h1{
+  font-family:"Cormorant Garamond",serif;
+  font-size:34px;
+  color:#6b4f1d;
+  margin:8px 0;
+}
 
-        .section-title {
-            font-family: 'Cinzel', serif;
-            color: var(--primary-color);
-            font-size: 20px;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-        }
+h2{
+  font-family:"Cormorant Garamond",serif;
+  font-size:26px;
+  color:#6b4f1d;
+  margin:34px 0 12px;
+}
 
-        .opening-text {
-            font-size: 14px;
-            margin-bottom: 20px;
-            color: #444;
-        }
+p{
+  line-height:1.9;
+}
 
-        .participants-list {
-            list-style: none;
-            padding: 0;
-            margin: 15px 0;
-        }
+.names{
+  list-style:none;
+  margin:24px 0;
+}
 
-        .participants-list li {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--primary-color);
-            padding: 4px 0;
-        }
+.names li{
+  padding:6px 0;
+  text-align:center;
+  font-size:18px;
+  color:#6b4f1d;
+}
 
-        .parents-info {
-            font-size: 14px;
-            margin: 12px 0 20px 0;
-            color: #555;
-        }
+.info{
+  margin:22px 0;
+}
 
-        .sloka-box {
-            background: #FAF5EB;
-            border-left: 3px solid var(--gold-color);
-            border-right: 3px solid var(--gold-color);
-            padding: 16px;
-            border-radius: 8px;
-            margin: 20px 0;
-            font-size: 13px;
-        }
+.info div{
+  padding:12px 0;
+  border-bottom:1px solid #eee5d5;
+}
 
-        .sloka-title {
-            font-weight: 600;
-            color: var(--primary-color);
-            margin: 4px 0;
-        }
+.btn{
+  display:inline-block;
+  margin-top:22px;
+  padding:12px 28px;
+  border:1px solid #b58a3c;
+  border-radius:999px;
+  color:#6b4f1d;
+  text-decoration:none;
+  font-weight:500;
+  transition:.25s;
+}
 
-        .sloka-trans {
-            color: #555;
-            font-style: italic;
-        }
+.btn:hover{
+  background:#b58a3c;
+  color:white;
+}
 
-        .divider {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 22px 0;
-        }
+.fade{
+  opacity:0;
+  transform:translateY(20px);
+  transition:.8s ease;
+}
 
-        .divider::before, .divider::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--gold-color), transparent);
-        }
-
-        .divider-icon {
-            padding: 0 10px;
-            color: var(--gold-color);
-            font-size: 14px;
-        }
-
-        .event-box {
-            background: #FAF5EB;
-            padding: 18px;
-            border-radius: 10px;
-            margin: 20px 0;
-        }
-
-        .event-box h4 {
-            font-family: 'Cinzel', serif;
-            color: var(--primary-color);
-            font-size: 16px;
-            margin-bottom: 8px;
-        }
-
-        .event-box p {
-            font-size: 14px;
-            margin-bottom: 4px;
-        }
-
-        .btn-maps {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: #FFFFFF;
-            padding: 12px 28px;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            margin-top: 12px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(92, 58, 33, 0.2);
-            font-size: 14px;
-        }
-
-        .btn-maps:hover {
-            background-color: var(--gold-color);
-            color: #333;
-            transform: translateY(-2px);
-        }
-
-        .closing {
-            font-size: 14px;
-            margin-top: 20px;
-        }
-
-        .closing h3 {
-            font-family: 'Cinzel', serif;
-            color: var(--primary-color);
-            font-size: 18px;
-            margin: 15px 0;
-        }
-
-        /* Floating Music Button */
-        .music-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 46px;
-            height: 46px;
-            background-color: var(--primary-color);
-            color: var(--gold-color);
-            border: 2px solid var(--gold-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            z-index: 1000;
-        }
-    </style>
+.fade.show{
+  opacity:1;
+  transform:none;
+}
+</style>
 </head>
 <body>
 
-    <!-- Tombol Pemutar Musik -->
-    <button class="music-btn" id="musicToggle" title="Putar/Hentikan Musik">🎵</button>
-    <audio id="bgMusic" loop>
-        <source src="musik-bali.mp3" type="audio/mpeg">
-    </audio>
+<div class="container">
 
-    <div class="container">
-        <!-- SVG Watermark Ongkara Mandala di Background -->
-        <svg class="bg-ongkara-watermark" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="100" cy="100" r="90" stroke="#5C3A21" stroke-width="2" stroke-dasharray="4 2"/>
-            <circle cx="100" cy="100" r="70" stroke="#5C3A21" stroke-width="1.5"/>
-            <!-- Kelopak Padma/Teratai -->
-            <path d="M100 10 C105 30 115 35 130 30 C120 45 125 55 145 55 C130 65 130 80 145 90 C130 95 120 110 130 125 C115 120 105 125 100 145 C95 125 85 120 70 125 C80 110 70 95 55 90 C70 80 70 65 55 55 C75 55 80 45 70 30 C85 35 95 30 100 10 Z" stroke="#5C3A21" stroke-width="1"/>
-            <!-- Simbol Ongkara -->
-            <text x="100" y="118" font-family="'Cinzel', serif" font-size="52" font-weight="bold" fill="#5C3A21" text-anchor="middle">ᬁ</text>
-        </svg>
+<div class="card">
+  <!-- Watermark Ongkara di Background -->
+  <div class="bg-ongkara">ᬁ</div>
 
-        <div class="content-wrapper">
-            <!-- Ornaments Ukiran Emas Atas -->
-            <svg class="ornament-header" viewBox="0 0 400 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 50 Q 100 10 200 10 Q 300 10 390 50" stroke="#D4AF37" stroke-width="3" fill="none"/>
-                <path d="M30 55 Q 110 20 200 20 Q 290 20 370 55" stroke="#5C3A21" stroke-width="1" fill="none"/>
-                <circle cx="200" cy="10" r="6" fill="#D4AF37"/>
-                <circle cx="150" cy="17" r="4" fill="#D4AF37"/>
-                <circle cx="250" cy="17" r="4" fill="#D4AF37"/>
-            </svg>
+  <div class="content">
 
-            <!-- Logo Mandala Ongkara Utama -->
-            <div class="smooth-animate">
-                <svg class="ongkara-logo" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="60" cy="60" r="55" stroke="#D4AF37" stroke-width="2"/>
-                    <circle cx="60" cy="60" r="46" stroke="#5C3A21" stroke-width="1.5" stroke-dasharray="3 2"/>
-                    <text x="60" y="73" font-family="'Cinzel', serif" font-size="38" font-weight="bold" fill="#5C3A21" text-anchor="middle">ᬁ</text>
-                </svg>
-            </div>
+    <!-- Ukiran Bali Atas -->
+    <svg class="ornamen" viewBox="0 0 100 40">
+      <path d="M5 20 Q20 5 35 20 T65 20 T95 20" stroke="#b58a3c" stroke-width="2" fill="none"/>
+      <circle cx="50" cy="20" r="3" fill="#b58a3c"/>
+    </svg>
 
-            <!-- Salam Pembuka & Teks Pengantar -->
-            <div class="smooth-animate">
-                <h2 class="section-title">Om Swastyastu</h2>
-                <p class="opening-text">
-                    Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa/Tuhan Yang Maha Esa kami bermaksud mengundang Bapak/Ibu/Saudara/i pada Upacara Manusa Yadnya Metatah (Potong Gigi) Putra & Putri kami.
-                </p>
-            </div>
+    <div class="center fade">
+      <div class="om">ᬁ</div>
+      <h1>Om Swastyastu</h1>
 
-            <div class="divider"><span class="divider-icon">❖</span></div>
-
-            <!-- Sane Nyinggakang Mepandes & Orang Tua -->
-            <div class="smooth-animate">
-                <h3 class="section-title" style="font-size: 16px;">Sane Nyinggakang Mepandes / Metatah</h3>
-                <ul class="participants-list">
-                    <li>Ni Kadek Wiwik Astutiari</li>
-                    <li>Ni Komang Aprianti</li>
-                    <li>I Ketut Pande Adi Putra</li>
-                    <li>I Gede Pande Wiraguna</li>
-                </ul>
-
-                <p class="parents-info">
-                    Anak dari:<br>
-                    <strong>I Made XXXX & Ni Nyoman XXXX</strong>
-                </p>
-            </div>
-
-            <!-- Sloka Bhagavad Gita -->
-            <div class="smooth-animate">
-                <div class="sloka-box">
-                    <p><em>Devan bhavayatanena te deva bhavayantu vah parasparam bhavayantah sreyah param avapsyatha</em></p>
-                    <p class="sloka-title">(Bhagavad Gita 3:11)</p>
-                    <p class="sloka-trans">
-                        "Dengan ini (Yadnya), kami berbakti kepada Hyang Widhi dan dengan ini pula Hyang Widhi memelihara dan mengasihi kamu. Dengan saling memelihara satu sama lain, kamu akan mencapai kebaikan yang maha tinggi."
-                    </p>
-                </div>
-            </div>
-
-            <div class="divider"><span class="divider-icon">❖</span></div>
-
-            <!-- Waktu & Tempat -->
-            <div class="smooth-animate">
-                <div class="event-box">
-                    <h4>Waktu & Tempat</h4>
-                    <p><strong>Hari / Tanggal:</strong> [Isi Hari & Tanggal]</p>
-                    <p><strong>Pukul:</strong> [Isi Jam, misal: 10.00 WITA - Selesai]</p>
-                    <p><strong>Bertempat di:</strong> Banjar Bengkel, Desa Antiga</p>
-                </div>
-
-                <!-- Tombol Google Maps Presisi -->
-                <a href="https://maps.google.com/?cid=12194438229747912696" target="_blank" class="btn-maps">
-                    📍 Menuju Acara
-                </a>
-            </div>
-
-            <div class="divider"><span class="divider-icon">❖</span></div>
-
-            <!-- Penutup -->
-            <div class="closing smooth-animate">
-                <p>Merupakan suatu kebahagiaan dan kehormatan bagi kami apabila Bapak/ Ibu/ Saudara/i berkenan hadir untuk memberikan doa restu.</p>
-                <p style="margin-top: 8px;">Atas kehadiran dan doa restunya kami ucapkan terima kasih.</p>
-                
-                <h3>Om Shanti Shanti Shanti Om</h3>
-            </div>
-
-            <!-- Ornaments Ukiran Emas Bawah -->
-            <svg class="ornament-footer" viewBox="0 0 400 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 50 Q 100 10 200 10 Q 300 10 390 50" stroke="#D4AF37" stroke-width="3" fill="none"/>
-                <path d="M30 55 Q 110 20 200 20 Q 290 20 370 55" stroke="#5C3A21" stroke-width="1" fill="none"/>
-                <circle cx="200" cy="10" r="6" fill="#D4AF37"/>
-                <circle cx="150" cy="17" r="4" fill="#D4AF37"/>
-                <circle cx="250" cy="17" r="4" fill="#D4AF37"/>
-            </svg>
-        </div>
+      <p style="margin-top:18px;">
+        Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa,
+        kami mengundang Bapak/Ibu/Saudara/i untuk berkenan hadir
+        dalam Upacara Manusa Yadnya Metatah (Potong Gigi) Putra & Putri kami.
+      </p>
     </div>
 
-    <!-- JavaScript Animasi Smooth & Pemutar Musik -->
-    <script>
-        // Intersection Observer untuk Animasi Smooth
-        const observerOptions = { threshold: 0.1 };
+    <ul class="names">
+      <li class="fade"><strong>Ni Kadek Wiwik Astutiari</strong></li>
+      <li class="fade"><strong>Ni Komang Aprianti</strong></li>
+      <li class="fade"><strong>I Ketut Pande Adi Putra</strong></li>
+      <li class="fade"><strong>I Gede Pande Wiraguna</strong></li>
+    </ul>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                }
-            });
-        }, observerOptions);
+    <div class="center fade">
+      <p style="font-size:14px;color:#7c6743;">Anak dari:</p>
+      <p style="font-weight:600;">I Made XXXX & Ni Nyoman XXXX</p>
+    </div>
 
-        document.querySelectorAll('.smooth-animate').forEach(el => {
-            observer.observe(el);
-        });
+    <h2 class="center fade">Bhagavad Gita 3:11</h2>
 
-        // Kontrol Musik
-        const musicBtn = document.getElementById('musicToggle');
-        const bgMusic = document.getElementById('bgMusic');
-        let isPlaying = false;
+    <p class="center fade" style="font-style:italic;color:#7c6743;">
+      "Devan bhavayatanena te deva bhavayantu vah parasparam bhavayantah sreyah param avapsyatha."
+    </p>
 
-        musicBtn.addEventListener('click', function() {
-            if (isPlaying) {
-                bgMusic.pause();
-                musicBtn.textContent = '🎵';
-            } else {
-                bgMusic.play();
-                musicBtn.textContent = '🔊';
-            }
-            isPlaying = !isPlaying;
-        });
-    </script>
+    <p class="center fade" style="margin-top:12px;font-size:14px;">
+      Dengan yadnya, manusia memuliakan Hyang Widhi, dan melalui keharmonisan akan tercapai kebaikan yang utama.
+    </p>
+
+    <h2 class="center fade">Waktu & Tempat</h2>
+
+    <div class="info fade center">
+      <div><strong>Hari / Tanggal</strong><br>[Isi Hari & Tanggal]</div>
+      <div><strong>Pukul</strong><br>[Isi Jam]</div>
+      <div><strong>Tempat</strong><br>Banjar Bengkel Gang Nagasari, Desa Antiga</div>
+    </div>
+
+    <div class="center fade">
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Banjar+Bengkel+Gang+Nagasari+Desa+Antiga+Bali" target="_blank">
+        📍 Menuju Lokasi
+      </a>
+    </div>
+
+    <div class="center fade" style="margin-top:40px;">
+      <p>
+        Merupakan suatu kebahagiaan dan kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.
+      </p>
+
+      <p style="margin-top:18px;">
+        Atas kehadiran dan doa restunya kami ucapkan terima kasih.
+      </p>
+
+      <p style="margin-top:24px;font-family:'Cormorant Garamond',serif;font-size:24px;color:#6b4f1d;">
+        Om Shanti Shanti Shanti Om
+      </p>
+    </div>
+
+    <!-- Ukiran Bali Bawah -->
+    <svg class="ornamen" viewBox="0 0 100 40" style="margin-top:28px;transform:rotate(180deg);">
+      <path d="M5 20 Q20 5 35 20 T65 20 T95 20" stroke="#b58a3c" stroke-width="2" fill="none"/>
+      <circle cx="50" cy="20" r="3" fill="#b58a3c"/>
+    </svg>
+
+  </div>
+</div>
+
+</div>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) e.target.classList.add("show");
+  });
+}, {threshold: .15});
+
+document.querySelectorAll(".fade").forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
