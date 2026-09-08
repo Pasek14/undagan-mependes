@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Mependes / Metatah</title>
+    <title>Undangan Metatah</title>
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --primary-color: #5C3A21;
-            --secondary-color: #D4AF37;
-            --bg-color: #F7F3ED;
-            --text-color: #333333;
+            --gold-color: #D4AF37;
+            --bg-color: #F8F5F0;
             --card-bg: #FFFFFF;
         }
 
@@ -26,110 +25,165 @@
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-color);
+            color: #333333;
             line-height: 1.6;
             padding: 20px 10px;
             overflow-x: hidden;
         }
 
-        /* Container Card dengan Bingkai Ukiran Bali */
+        /* Container Card Utama */
         .container {
             position: relative;
-            max-width: 650px;
+            max-width: 600px;
             margin: 0 auto;
             background: var(--card-bg);
             padding: 45px 25px;
             border-radius: 16px;
             box-shadow: 0 15px 35px rgba(92, 58, 33, 0.12);
-            border: 2px solid var(--secondary-color);
+            border: 2px solid var(--gold-color);
             text-align: center;
-            
-            /* Animasi Awal: Dari kecil ke besar secara smooth */
-            animation: zoomIn 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
 
-        /* Hiasan Ukiran Khas Bali di Sudut */
-        .bali-corner {
+        /* Hiasan Frame Ukiran Khas Bali di 4 Sudut */
+        .corner-pattern {
             position: absolute;
-            width: 45px;
-            height: 45px;
-            border: 3px solid var(--secondary-color);
+            width: 40px;
+            height: 40px;
             pointer-events: none;
         }
-        .top-left { top: 12px; left: 12px; border-right: none; border-bottom: none; }
-        .top-right { top: 12px; right: 12px; border-left: none; border-bottom: none; }
-        .bottom-left { bottom: 12px; left: 12px; border-right: none; border-top: none; }
-        .bottom-right { bottom: 12px; right: 12px; border-left: none; border-top: none; }
 
-        /* Hiasan Aksen Daun / Pohon Cokelat */
-        .leaf-accent {
-            font-size: 20px;
-            color: var(--primary-color);
-            margin: 10px 0;
+        .top-left {
+            top: 10px;
+            left: 10px;
+            border-top: 3px solid var(--gold-color);
+            border-left: 3px solid var(--gold-color);
+            border-top-left-radius: 8px;
+        }
+        .top-left::after {
+            content: "❖";
+            position: absolute;
+            top: 2px;
+            left: 4px;
+            color: var(--gold-color);
+            font-size: 14px;
         }
 
-        /* Animasi Scroll Class */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
+        .top-right {
+            top: 10px;
+            right: 10px;
+            border-top: 3px solid var(--gold-color);
+            border-right: 3px solid var(--gold-color);
+            border-top-right-radius: 8px;
+        }
+        .top-right::after {
+            content: "❖";
+            position: absolute;
+            top: 2px;
+            right: 4px;
+            color: var(--gold-color);
+            font-size: 14px;
         }
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+        .bottom-left {
+            bottom: 10px;
+            left: 10px;
+            border-bottom: 3px solid var(--gold-color);
+            border-left: 3px solid var(--gold-color);
+            border-bottom-left-radius: 8px;
+        }
+        .bottom-left::after {
+            content: "❖";
+            position: absolute;
+            bottom: 2px;
+            left: 4px;
+            color: var(--gold-color);
+            font-size: 14px;
         }
 
-        /* Keyframes Zoom In Pembuka */
-        @keyframes zoomIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.85);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
+        .bottom-right {
+            bottom: 10px;
+            right: 10px;
+            border-bottom: 3px solid var(--gold-color);
+            border-right: 3px solid var(--gold-color);
+            border-bottom-right-radius: 8px;
+        }
+        .bottom-right::after {
+            content: "❖";
+            position: absolute;
+            bottom: 2px;
+            right: 4px;
+            color: var(--gold-color);
+            font-size: 14px;
         }
 
-        .hero h1 {
-            font-family: 'Cinzel', serif;
-            color: var(--primary-color);
-            font-size: 24px;
-            letter-spacing: 2px;
+        /* Ukiran Mahkota Bali Sederhana di Atas */
+        .bali-crown {
+            font-size: 22px;
+            color: var(--gold-color);
             margin-bottom: 5px;
+            letter-spacing: 4px;
         }
 
-        .hero h2 {
-            font-family: 'Cinzel', serif;
-            color: var(--secondary-color);
-            font-size: 20px;
-            margin-bottom: 15px;
+        /* Animasi Kustom: Dari Bawah Kecil -> Ke Atas Besar & Smooth */
+        .smooth-animate {
+            opacity: 0;
+            transform: translateY(60px) scale(0.85);
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
         }
 
-        .quote {
+        .smooth-animate.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Typography */
+        .opening-text {
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .participants-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .participants-list li {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary-color);
+            padding: 6px 0;
+        }
+
+        .parents-info {
+            font-size: 14px;
+            margin: 15px 0 25px 0;
             font-style: italic;
+        }
+
+        .sloka-box {
+            background: #FAF5EB;
+            border-left: 3px solid var(--gold-color);
+            border-right: 3px solid var(--gold-color);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 25px 0;
+            font-size: 13px;
+        }
+
+        .sloka-title {
             font-weight: 600;
             color: var(--primary-color);
             margin-bottom: 5px;
         }
 
-        .quote-sub {
-            font-size: 13px;
-            color: #666;
-            margin-bottom: 20px;
+        .sloka-trans {
+            color: #555;
+            font-style: italic;
+            margin-top: 5px;
         }
 
-        .welcome-text {
-            font-size: 14px;
-            background: #FAF4EB;
-            padding: 18px;
-            border-radius: 10px;
-            border-left: 4px solid var(--secondary-color);
-            margin-bottom: 25px;
-        }
-
-        /* Divider Khas Bali */
         .divider {
             display: flex;
             align-items: center;
@@ -141,52 +195,32 @@
             content: "";
             flex: 1;
             height: 1px;
-            background: linear-gradient(to right, transparent, var(--secondary-color), transparent);
+            background: linear-gradient(to right, transparent, var(--gold-color), transparent);
         }
 
-        .divider-symbol {
+        .divider-icon {
             padding: 0 10px;
-            color: var(--secondary-color);
+            color: var(--gold-color);
             font-size: 16px;
         }
 
-        .section-title {
-            font-family: 'Cinzel', serif;
-            color: var(--primary-color);
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-
-        .participants-list {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
-        }
-
-        .participants-list li {
-            font-weight: 600;
-            font-size: 15px;
-            padding: 12px;
-            margin-bottom: 10px;
-            background: #FAFAFA;
-            border-radius: 8px;
-            border: 1px solid #EAEAEA;
-            border-left: 3px solid var(--primary-color);
-            color: var(--primary-color);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-        }
-
-        .event-details {
-            background: #FAF4EB;
+        .event-box {
+            background: #FAF5EB;
             padding: 20px;
             border-radius: 10px;
             margin: 20px 0;
-            text-align: left;
         }
 
-        .event-details p {
-            margin-bottom: 8px;
+        .event-box h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-color);
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .event-box p {
             font-size: 14px;
+            margin-bottom: 5px;
         }
 
         .btn-maps {
@@ -199,24 +233,31 @@
             font-weight: 600;
             margin-top: 15px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(92, 58, 33, 0.25);
+            box-shadow: 0 4px 12px rgba(92, 58, 33, 0.2);
+            font-size: 14px;
         }
 
         .btn-maps:hover {
-            background-color: var(--secondary-color);
+            background-color: var(--gold-color);
             color: #333;
             transform: translateY(-2px);
         }
 
         .closing {
-            margin-top: 30px;
             font-size: 14px;
+            margin-top: 25px;
+        }
+
+        .closing h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-color);
+            font-size: 16px;
+            margin: 15px 0;
         }
 
         .family-name {
             font-weight: 600;
             color: var(--primary-color);
-            margin-top: 10px;
         }
 
         /* Floating Audio Control Button */
@@ -227,8 +268,8 @@
             width: 48px;
             height: 48px;
             background-color: var(--primary-color);
-            color: var(--secondary-color);
-            border: 2px solid var(--secondary-color);
+            color: var(--gold-color);
+            border: 2px solid var(--gold-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -237,11 +278,6 @@
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             z-index: 1000;
-            transition: transform 0.2s ease;
-        }
-
-        .music-btn:active {
-            transform: scale(0.9);
         }
     </style>
 </head>
@@ -249,112 +285,106 @@
 
     <!-- Tombol Musik Melayang -->
     <button class="music-btn" id="musicToggle" title="Putar/Hentikan Musik">🎵</button>
-    
-    <!-- Audio Element (Ganti 'musik-bali.mp3' dengan file lagu Anda) -->
     <audio id="bgMusic" loop>
         <source src="musik-bali.mp3" type="audio/mpeg">
     </audio>
 
     <div class="container">
-        <!-- Hiasan Sudut Ukiran Bali -->
-        <div class="bali-corner top-left"></div>
-        <div class="bali-corner top-right"></div>
-        <div class="bali-corner bottom-left"></div>
-        <div class="bali-corner bottom-right"></div>
+        <!-- Bingkai Ukiran Bali Sudut -->
+        <div class="corner-pattern top-left"></div>
+        <div class="corner-pattern top-right"></div>
+        <div class="corner-pattern bottom-left"></div>
+        <div class="corner-pattern bottom-right"></div>
 
-        <!-- Hero Section -->
-        <div class="hero">
-            <div class="leaf-accent">🌿 ༻༺ 🌿</div>
-            <h1>UPACARA MANUSA YADNYA</h1>
-            <h2>MEPENDES / METATAH</h2>
-            <p class="quote">"Ngunying Sakandaning Sad Ripu"</p>
-            <p class="quote-sub">(Pembersihan Diri dari Enam Sifat Buruk Manusia Menuju Kedewasaan yang Bijaksana)</p>
-        </div>
+        <!-- Mahkota Hiasan -->
+        <div class="bali-crown">༺ 🏵️ ༻</div>
 
-        <div class="welcome-text reveal">
-            <p><em>Titiang ngaturan sugeng rauh ring rahina suci puniki.</em></p>
-            <p>Selamat datang di hari yang penuh berkah dan kebahagiaan. Suatu keharuman dan kehormatan bagi kami untuk berbagi momentum sakral ini bersama Bapak/Ibu/Saudara/i, menuntun putra-putri kami melangkah menuju lembaran hidup yang mulia, berbudi luhur, dan penuh kedamaian.</p>
-        </div>
-
-        <div class="divider"><span class="divider-symbol">❖</span></div>
-
-        <!-- Salam Pembuka -->
-        <div class="reveal">
-            <h3 class="section-title">Om Swastyastu</h3>
-            <p style="font-size: 14px; margin-bottom: 15px;"><em>Rahajeng sareng sami.</em></p>
-            <p style="font-size: 14px;">
-                Puji dan syukur senantiasa kami panjatkan ke hadapan Ida Sang Hyang Widhi Wasa / Tuhan Yang Maha Esa, karena atas asung kertha wara nugraha-Nya, kami sekeluarga diberikan rahmat kesehatan, keharmonisan, serta kesempatan untuk melangsungkan Upacara Suci Manusa Yadnya.
-            </p>
-            <p style="font-size: 14px; margin-top: 10px;">
-                Upacara <strong>Mependes / Metatah</strong> ini merupakan wujud rasa syukur serta kewajiban mulia kami sebagai orang tua untuk mengantarkan putra-putri kami mengendalikan <em>Sad Ripu</em> agar menjadi pribadi yang lebih bijaksana.
+        <!-- Pembuka -->
+        <div class="smooth-animate">
+            <p class="opening-text">
+                Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa/Tuhan Yang Maha Esa kami bermaksud mengundang Bapak/Ibu/Saudara/i pada Upacara Manusa Yadnya Metatah (Potong Gigi) Putra & Putri kami.
             </p>
         </div>
 
-        <div class="divider"><span class="divider-symbol">❖</span></div>
+        <div class="divider"><span class="divider-icon">❖</span></div>
 
-        <!-- Peserta -->
-        <div class="reveal">
-            <h3 class="section-title">Peserta Upacara Metatah</h3>
+        <!-- Nama Peserta -->
+        <div class="smooth-animate">
             <ul class="participants-list">
-                <li>1. Ni Kadek Wiwik Astutiari</li>
-                <li>2. Ni Komang Aprianti</li>
-                <li>3. I Ketut Pande Adi Putra</li>
-                <li>4. I Gede Pande Wiraguna</li>
+                <li>Ni Kadek Wiwik Astutiari</li>
+                <li>Ni Komang Aprianti</li>
+                <li>I Ketut Pande Adi Putra</li>
+                <li>I Gede Pande Wiraguna</li>
             </ul>
+
+            <p class="parents-info">
+                Putra & Putri dari pasangan<br>
+                <strong>I Made XXXX & Ni Nyoman XXXX</strong>
+            </p>
         </div>
 
-        <div class="divider"><span class="divider-symbol">❖</span></div>
+        <!-- Sloka Bhagavad Gita -->
+        <div class="smooth-animate">
+            <div class="sloka-box">
+                <p style="font-weight: 500;"><em>Devan bhavayatanena te deva bhavayantu vah parasparam bhavayantah sreyah param avapsyatha</em></p>
+                <p class="sloka-title">(Bhagavad Gita 3:11)</p>
+                <p class="sloka-trans">
+                    "Dengan ini (Yadnya), kami berbakti kepada Hyang Widhi dan dengan ini pula Hyang Widhi memelihara dan mengasihi kamu. Dengan saling memelihara satu sama lain, kamu akan mencapai kebaikan yang maha tinggi."
+                </p>
+            </div>
+        </div>
 
-        <!-- Waktu & Lokasi -->
-        <div class="reveal">
-            <h3 class="section-title">Waktu & Lokasi Acara</h3>
-            <p style="font-size: 14px;">Merupakan suatu kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir pada:</p>
-            
-            <div class="event-details">
+        <div class="divider"><span class="divider-icon">❖</span></div>
+
+        <!-- Waktu & Tempat -->
+        <div class="smooth-animate">
+            <div class="event-box">
+                <h4>Waktu & Tempat</h4>
                 <p><strong>Hari / Tanggal:</strong> [Isi Hari & Tanggal]</p>
-                <p><strong>Waktu:</strong> [Isi Jam, misal: 09.00 WITA – Selesai]</p>
-                <p><strong>Tempat:</strong> Banjar Bengkel, Desa Antiga</p>
+                <p><strong>Pukul:</strong> [Isi Jam, misal: 10.00 WITA - Selesai]</p>
+                <p><strong>Bertempat di:</strong> Banjar Bengkel, Desa Antiga</p>
             </div>
 
             <!-- Tombol Google Maps Presisi -->
             <a href="https://maps.google.com/?cid=12194438229747912696" target="_blank" class="btn-maps">
-                📍 Petunjuk Lokasi (Google Maps)
+                📍 Menuju Acara
             </a>
         </div>
 
-        <div class="divider"><span class="divider-symbol">❖</span></div>
+        <div class="divider"><span class="divider-icon">❖</span></div>
 
         <!-- Penutup -->
-        <div class="closing reveal">
-            <p>Atas kehadiran dan doa restu Bapak/Ibu/Saudara/i, kami haturkan terima kasih yang sebesar-besarnya.</p>
-            <h3 class="section-title" style="margin-top: 15px;">Om Shanti Shanti Shanti Om</h3>
+        <div class="closing smooth-animate">
+            <p>Merupakan suatu kebahagiaan dan kehormatan bagi kami apabila Bapak/ Ibu/ Saudara/i berkenan hadir untuk memberikan doa restu.</p>
+            <p style="margin-top: 10px;">Atas kehadiran dan doa restunya kami ucapkan terima kasih.</p>
             
-            <p style="margin-top: 20px;">Kami yang berbahagia:</p>
-            <p class="family-name">[Nama Orang Tua / Kepala Keluarga]</p>
-            <p class="family-name">Beserta Keluarga Besar [Nama Trah / Dadia]</p>
+            <h3>Om Shanti Shanti Shanti Om</h3>
+            
+            <p>Kami yang berbahagia</p>
+            <p class="family-name">Kel. I Made XXXX & Ni Nyoman XXXX</p>
         </div>
     </div>
 
-    <!-- JavaScript untuk Animasi Scroll & Kontrol Musik -->
+    <!-- JavaScript Animasi & Musik -->
     <script>
-        // Animasi Scroll (Fade In Elemen saat Dilihat)
-        function revealOnScroll() {
-            const reveals = document.querySelectorAll('.reveal');
-            for (let i = 0; i < reveals.length; i++) {
-                const windowHeight = window.innerHeight;
-                const elementTop = reveals[i].getBoundingClientRect().top;
-                const elementVisible = 100;
-                
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add('active');
+        // Intersection Observer untuk Animasi Smooth dari Bawah Kecil ke Atas Besar
+        const observerOptions = {
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
                 }
-            }
-        }
+            });
+        }, observerOptions);
 
-        window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll(); // Trigger sekali saat pertama kali muat
+        document.querySelectorAll('.smooth-animate').forEach(el => {
+            observer.observe(el);
+        });
 
-        // Kontrol Pemutar Musik
+        // Kontrol Musik
         const musicBtn = document.getElementById('musicToggle');
         const bgMusic = document.getElementById('bgMusic');
         let isPlaying = false;
