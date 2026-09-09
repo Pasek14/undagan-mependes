@@ -29,12 +29,13 @@
             width: 100%;
             background: #ffffff;
             border-radius: 20px;
-            padding: 60px 40px;
+            padding: 50px 35px;
             text-align: center;
             position: relative;
             box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
             animation: fadeIn 1s ease-out;
             border: 1px solid #e8dec8;
+            overflow: hidden;
         }
 
         @keyframes fadeIn {
@@ -42,38 +43,40 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ORNAMEN UKIRAN BALI DI PINGGIR BINGKAI CARD */
-        .balinese-corner {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            color: #c59b27;
-            font-size: 28px;
-            line-height: 50px;
-            pointer-events: none;
-            user-select: none;
-        }
-
-        .top-left { top: 12px; left: 15px; text-align: left; }
-        .top-right { top: 12px; right: 15px; text-align: right; }
-        .bottom-left { bottom: 12px; left: 15px; text-align: left; }
-        .bottom-right { bottom: 12px; right: 15px; text-align: right; }
-
-        /* Garis Bingkai Motif Ukir di Pinggir */
-        .balinese-border-frame {
+        /* Garis Bingkai Emas Presisi */
+        .border-frame {
             position: absolute;
             top: 15px;
             left: 15px;
             right: 15px;
             bottom: 15px;
-            border: 2px double #d4af37;
+            border: 1px solid #d4af37;
             border-radius: 12px;
             pointer-events: none;
         }
 
-        /* Header / Opening */
+        /* UKIRAN BALI EMAS (SVG Vektor Dalam Kode) */
+        .ornament-svg {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .ornament-top {
+            margin-bottom: 20px;
+        }
+
+        .ornament-bottom {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            transform: rotate(180deg); /* Dibalik untuk ukiran bawah */
+        }
+
+        /* Header & Typography */
         .symbol {
-            font-size: 3rem;
+            font-size: 2.8rem;
             color: #c59b27;
             margin-bottom: 10px;
             display: inline-block;
@@ -96,20 +99,12 @@
             line-height: 1.8;
             color: #555;
             max-width: 520px;
-            margin: 0 auto 30px;
+            margin: 0 auto 25px;
         }
 
-        /* Pembatas Motif Bali */
-        .divider {
-            color: #c59b27;
-            font-size: 1.2rem;
-            margin: 25px 0;
-            letter-spacing: 8px;
-        }
-
-        /* FONT JUDUL MEPANDES WARNA EMAS KLASIK & TEPAT DI TENGAH */
+        /* Judul Mepandes Warna Emas Tepat di Tengah */
         .title-container {
-            margin: 20px 0 30px;
+            margin: 15px 0 25px;
             text-align: center;
         }
 
@@ -165,7 +160,7 @@
             font-size: 0.95rem;
             line-height: 1.8;
             color: #666;
-            margin: 25px 0 35px;
+            margin: 20px 0 30px;
         }
 
         .parents strong {
@@ -204,7 +199,7 @@
             font-size: 0.95rem;
             padding: 14px 30px;
             border-radius: 50px;
-            margin: 10px 0 30px;
+            margin: 10px 0 25px;
             box-shadow: 0 6px 18px rgba(168, 126, 24, 0.2);
             transition: all 0.3s ease;
         }
@@ -224,26 +219,37 @@
             font-size: 1.2rem;
             font-weight: 700;
             color: #c59b27;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         @media (max-width: 480px) {
-            .card { padding: 45px 20px; }
+            .card { padding: 40px 20px; }
             .title { font-size: 1.7rem; }
             .name-card { font-size: 0.95rem; }
-            .balinese-corner { font-size: 22px; }
+            .ornament-svg { max-width: 220px; }
         }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <!-- BINGKAI & ORNAMEN PINGGIR KHAS BALI -->
-        <div class="balinese-border-frame"></div>
-        <div class="balinese-corner top-left">꧁</div>
-        <div class="balinese-corner top-right">꧂</div>
-        <div class="balinese-corner bottom-left">꧁</div>
-        <div class="balinese-corner bottom-right">꧂</div>
+        <div class="border-frame"></div>
+
+        <!-- UKIRAN BALI ATAS (VEKTOR EMBEDDED) -->
+        <div class="ornament-top">
+            <svg class="ornament-svg" viewBox="0 0 500 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M250 10 C230 35, 200 15, 170 30 C140 45, 120 20, 90 35 C60 50, 30 30, 0 50 C30 55, 60 40, 90 45 C120 50, 140 30, 170 40 C200 50, 230 25, 250 45 C270 25, 300 50, 330 40 C360 30, 380 50, 410 45 C440 40, 470 55, 500 50 C470 30, 440 50, 410 35 C380 20, 360 45, 330 30 C300 15, 270 35, 250 10 Z" fill="url(#goldGradient)"/>
+                <circle cx="250" cy="20" r="8" fill="#d4af37"/>
+                <path d="M250 28 C235 50, 210 40, 180 55 C210 45, 235 55, 250 38 C265 55, 290 45, 320 55 C290 40, 265 50, 250 28 Z" fill="url(#goldGradient)"/>
+                <defs>
+                    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#f2d06b"/>
+                        <stop offset="50%" stop-color="#c59b27"/>
+                        <stop offset="100%" stop-color="#997a15"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
 
         <!-- Om Swastyastu -->
         <div class="symbol">ᬒᬵ</div>
@@ -253,9 +259,7 @@
             Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa, kami mengundang Bapak/Ibu/Saudara/i pada Upacara Manusa Yadnya Mepandes (Potong Gigi) putra-putri kami:
         </p>
 
-        <div class="divider">❖ ❖ ❖</div>
-
-        <!-- JUDUL TENGAH DENGAN WARNA FON EMAS -->
+        <!-- Judul Utama -->
         <div class="title-container">
             <h1 class="title">UPACARA MEPANDES</h1>
             <div class="subtitle">POTONG GIGI</div>
@@ -275,8 +279,6 @@
             <strong>I NYOMAN SADRA & NI LUH SULATRI</strong>
         </div>
 
-        <div class="divider">❖ ❖ ❖</div>
-
         <!-- Waktu & Lokasi -->
         <div class="info-box">
             <span class="info-title">WAKTU & LOKASI ACARA</span>
@@ -295,6 +297,23 @@
         </p>
 
         <h3 class="closing-mantra">Om Shanti, Shanti, Shanti Om</h3>
+
+        <!-- UKIRAN BALI BAWAH (VEKTOR EMBEDDED) -->
+        <div class="ornament-bottom">
+            <svg class="ornament-svg" viewBox="0 0 500 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M250 10 C230 35, 200 15, 170 30 C140 45, 120 20, 90 35 C60 50, 30 30, 0 50 C30 55, 60 40, 90 45 C120 50, 140 30, 170 40 C200 50, 230 25, 250 45 C270 25, 300 50, 330 40 C360 30, 380 50, 410 45 C440 40, 470 55, 500 50 C470 30, 440 50, 410 35 C380 20, 360 45, 330 30 C300 15, 270 35, 250 10 Z" fill="url(#goldGradient2)"/>
+                <circle cx="250" cy="20" r="8" fill="#d4af37"/>
+                <path d="M250 28 C235 50, 210 40, 180 55 C210 45, 235 55, 250 38 C265 55, 290 45, 320 55 C290 40, 265 50, 250 28 Z" fill="url(#goldGradient2)"/>
+                <defs>
+                    <linearGradient id="goldGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#f2d06b"/>
+                        <stop offset="50%" stop-color="#c59b27"/>
+                        <stop offset="100%" stop-color="#997a15"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+
     </div>
 
 </body>
