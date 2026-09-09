@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Undangan Manusa Yadnya Mepandes</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome untuk ikon musik -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         * {
             margin: 0;
@@ -21,6 +24,39 @@
             align-items: center;
             min-height: 100vh;
             padding: 30px 15px;
+        }
+
+        /* Tombol Musik Interaktif Floating */
+        .music-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #d4af37, #997a15);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .music-btn.playing {
+            animation: rotateMusic 4s linear infinite;
+        }
+
+        @keyframes rotateMusic {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         /* Card Utama dengan Background Putih */
@@ -71,7 +107,7 @@
         .ornament-bottom {
             margin-top: 25px;
             margin-bottom: 10px;
-            transform: rotate(180deg); /* Dibalik untuk ukiran bawah */
+            transform: rotate(180deg);
         }
 
         /* Header & Typography */
@@ -232,10 +268,21 @@
 </head>
 <body>
 
+    <!-- PEMANGGIL AUDIO SOUND MENTAH.MP3 -->
+    <audio id="bgMusic" loop>
+        <!-- UBAH 'USERNAME' DAN 'REPOSITORY' SESUAI AKUN GITHUB ANDA -->
+        <source src="https://raw.githubusercontent.com/USERNAME/REPOSITORY/main/sound%20mentah.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- TOMBOL KONTROL MUSIK FLATING -->
+    <div class="music-btn" id="musicBtn" onclick="toggleMusic()">
+        <i class="fa-solid fa-music"></i>
+    </div>
+
     <div class="card">
         <div class="border-frame"></div>
 
-        <!-- UKIRAN BALI ATAS (VEKTOR EMBEDDED) -->
+        <!-- UKIRAN BALI ATAS -->
         <div class="ornament-top">
             <svg class="ornament-svg" viewBox="0 0 500 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M250 10 C230 35, 200 15, 170 30 C140 45, 120 20, 90 35 C60 50, 30 30, 0 50 C30 55, 60 40, 90 45 C120 50, 140 30, 170 40 C200 50, 230 25, 250 45 C270 25, 300 50, 330 40 C360 30, 380 50, 410 45 C440 40, 470 55, 500 50 C470 30, 440 50, 410 35 C380 20, 360 45, 330 30 C300 15, 270 35, 250 10 Z" fill="url(#goldGradient)"/>
@@ -298,7 +345,7 @@
 
         <h3 class="closing-mantra">Om Shanti, Shanti, Shanti Om</h3>
 
-        <!-- UKIRAN BALI BAWAH (VEKTOR EMBEDDED) -->
+        <!-- UKIRAN BALI BAWAH -->
         <div class="ornament-bottom">
             <svg class="ornament-svg" viewBox="0 0 500 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M250 10 C230 35, 200 15, 170 30 C140 45, 120 20, 90 35 C60 50, 30 30, 0 50 C30 55, 60 40, 90 45 C120 50, 140 30, 170 40 C200 50, 230 25, 250 45 C270 25, 300 50, 330 40 C360 30, 380 50, 410 45 C440 40, 470 55, 500 50 C470 30, 440 50, 410 35 C380 20, 360 45, 330 30 C300 15, 270 35, 250 10 Z" fill="url(#goldGradient2)"/>
@@ -316,5 +363,31 @@
 
     </div>
 
+    <!-- SCRIPT KONTROL AUDIO -->
+    <script>
+        const audio = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicBtn');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+                musicBtn.classList.remove('playing');
+                musicBtn.innerHTML = '<i class="fa-solid fa-music"></i>';
+            } else {
+                audio.play();
+                musicBtn.classList.add('playing');
+                musicBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Putar audio otomatis saat pengunjung menyentuh/mengklik layar pertama kali
+        document.addEventListener('click', function() {
+            if (!isPlaying) {
+                toggleMusic();
+            }
+        }, { once: true });
+    </script>
 </body>
 </html>
