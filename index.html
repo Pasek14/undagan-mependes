@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Mepandes</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <title>Undangan Manusa Yadnya Mepandes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,135 +13,229 @@
         }
 
         body {
-            background-color: #0f0e13;
-            color: #f0e6d2;
+            background-color: #fcfcfc;
+            color: #333333;
             font-family: 'Plus Jakarta Sans', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
-        .container {
-            max-width: 600px;
+        /* Card Utama dengan Animasi Smooth Fade In & Float */
+        .card {
+            max-width: 650px;
             width: 100%;
-            background: #18161e;
-            border: 1px solid #d4af37;
-            border-radius: 16px;
-            padding: 40px 25px;
+            background: #ffffff;
+            border: 1px solid #e2d8c3;
+            border-radius: 24px;
+            padding: 60px 40px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            animation: fadeIn 1.2s ease-out, floatCard 6s ease-in-out infinite;
+        }
+
+        /* Animasi Masuk */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animasi Mengambang Halus */
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
 
         .symbol {
-            font-size: 2.5rem;
-            color: #d4af37;
-            margin-bottom: 10px;
+            font-size: 2.8rem;
+            color: #b8860b;
+            margin-bottom: 25px;
+            display: inline-block;
+            transition: transform 0.4s ease;
+        }
+
+        .symbol:hover {
+            transform: scale(1.15) rotate(5deg);
         }
 
         h1, h2, h3 {
             font-family: 'Cinzel', serif;
-            color: #d4af37;
+            color: #1a1a1a;
         }
 
-        .title {
-            font-size: 1.8rem;
-            margin: 15px 0 5px;
-            letter-spacing: 2px;
-        }
-
-        .subtitle {
-            font-size: 0.9rem;
-            letter-spacing: 3px;
-            color: #b89728;
+        .opening {
+            font-size: 1.5rem;
+            color: #b8860b;
             margin-bottom: 25px;
+            letter-spacing: 1px;
         }
 
-        p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #d0c8b8;
-            margin-bottom: 20px;
+        .intro-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555555;
+            margin-bottom: 45px; /* Jarak dibuat lega */
         }
 
         .divider {
             color: #d4af37;
-            margin: 20px 0;
-            opacity: 0.6;
+            font-size: 0.9rem;
+            margin: 40px 0;
+            letter-spacing: 6px;
+            opacity: 0.7;
         }
 
-        .list-names {
+        .title {
+            font-size: 2rem;
+            color: #b8860b;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            letter-spacing: 4px;
+            color: #777777;
+            margin-bottom: 45px; /* Jarak spasi ditingkatkan */
+        }
+
+        /* List Nama dengan Efek Hover Smooth */
+        .name-list {
             list-style: none;
-            margin: 20px 0;
+            margin: 35px 0;
         }
 
-        .list-names li {
+        .name-item {
             font-family: 'Cinzel', serif;
-            font-size: 1.05rem;
-            font-weight: 600;
-            padding: 8px 0;
-            border-bottom: 1px rgba(212, 175, 55, 0.15) dashed;
-            color: #fff;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #222222;
+            padding: 16px 20px;
+            margin-bottom: 15px; /* Spasi antar nama lega */
+            background: #faf8f5;
+            border: 1px solid #f0e6d2;
+            border-radius: 12px;
+            transition: all 0.3s ease;
         }
 
-        .list-names li:last-child {
-            border-bottom: none;
+        .name-item:hover {
+            background: #ffffff;
+            border-color: #b8860b;
+            transform: scale(1.02);
+            box-shadow: 0 6px 18px rgba(184, 134, 11, 0.12);
         }
 
         .parents {
-            font-size: 0.9rem;
-            color: #a09888;
-            margin-bottom: 25px;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #666666;
+            margin-top: 30px;
+            margin-bottom: 45px;
         }
 
         .parents strong {
-            color: #d4af37;
+            color: #1a1a1a;
+            font-size: 1.05rem;
         }
 
+        /* Box Informasi Waktu & Lokasi */
         .info-box {
-            background: #211e29;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 20px 0;
-            font-size: 0.95rem;
-            line-height: 1.8;
+            background: #faf8f5;
+            border-left: 4px solid #b8860b;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: left;
+            line-height: 2;
+            font-size: 1rem;
+            color: #444444;
         }
 
+        .info-box strong {
+            color: #b8860b;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Tombol Maps Interaktif */
         .btn-map {
             display: inline-block;
-            background: #d4af37;
-            color: #0f0e13;
+            background: #b8860b;
+            color: #ffffff;
             text-decoration: none;
             font-weight: 600;
-            padding: 12px 25px;
-            border-radius: 25px;
-            margin-top: 10px;
-            transition: 0.2s;
+            font-size: 0.95rem;
+            padding: 16px 36px;
+            border-radius: 50px;
+            margin-top: 15px;
+            margin-bottom: 45px;
+            box-shadow: 0 6px 20px rgba(184, 134, 11, 0.25);
+            transition: all 0.3s ease;
         }
 
         .btn-map:hover {
-            background: #f0e6d2;
+            background: #966d09;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(184, 134, 11, 0.35);
+        }
+
+        .closing-text {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #555555;
+            margin-bottom: 30px;
+        }
+
+        .closing-mantra {
+            font-size: 1.2rem;
+            color: #b8860b;
+            margin-top: 20px;
+        }
+
+        /* Responsif untuk Layar HP */
+        @media (max-width: 480px) {
+            .card {
+                padding: 40px 20px;
+            }
+            .title {
+                font-size: 1.6rem;
+            }
+            .name-item {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="card">
         <div class="symbol">ᬒᬵ</div>
-        <h2>Om Swastyastu</h2>
-        <p>Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa, kami mengundang Bapak/Ibu/Saudara/i pada Upacara Manusa Yadnya Mepandes (Potong Gigi) putra-putri kami:</p>
+        <h2 class="opening">Om Swastyastu</h2>
+        
+        <p class="intro-text">
+            Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa, kami mengundang Bapak/Ibu/Saudara/i pada Upacara Manusa Yadnya Mepandes (Potong Gigi) putra-putri kami:
+        </p>
 
         <div class="divider">❖ ❖ ❖</div>
 
         <h1 class="title">UPACARA MEPANDES</h1>
         <div class="subtitle">POTONG GIGI</div>
 
-        <ul class="list-names">
-            <li>NI KADEK WIWIK ASTUTIARI</li>
-            <li>NI KOMANG APRIANTI</li>
-            <li>I KETUT PANDE ADI PUTRA</li>
-            <li>I GEDE PANDE WIRAGUNA</li>
+        <ul class="name-list">
+            <li class="name-item">NI KADEK WIWIK ASTUTIARI</li>
+            <li class="name-item">NI KOMANG APRIANTI</li>
+            <li class="name-item">I KETUT PANDE ADI PUTRA</li>
+            <li class="name-item">I GEDE PANDE WIRAGUNA</li>
         </ul>
 
         <div class="parents">
@@ -152,21 +246,21 @@
         <div class="divider">❖ ❖ ❖</div>
 
         <div class="info-box">
-            <strong>WAKTU & LOKASI</strong><br>
-            📅 Selasa, 15 September 2026<br>
-            ⏰ 16:00 WITA – Selesai<br>
-            📍 Br. Bengkel Antiga Kelod Gg. Nagasari
+            <strong>WAKTU & LOKASI ACARA</strong>
+            📅 <strong>Hari/Tgl:</strong> Selasa, 15 September 2026<br>
+            ⏰ <strong>Waktu:</strong> 16:00 WITA – Selesai<br>
+            📍 <strong>Lokasi:</strong> Br. Bengkel Antiga Kelod Gg. Nagasari
         </div>
 
         <a href="https://maps.google.com/?q=Br.+Bengkel+Antiga+Kelod+Gg.+Nagasari" target="_blank" class="btn-map">
-            📍 Buka Google Maps
+            📍 Buka di Google Maps
         </a>
 
-        <p style="margin-top: 30px;">
+        <p class="closing-text">
             Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir memberikan doa restu. Terima kasih.
         </p>
 
-        <h3 style="margin-top: 20px; font-size: 1.1rem;">Om Shanti, Shanti, Shanti Om</h3>
+        <h3 class="closing-mantra">Om Shanti, Shanti, Shanti Om</h3>
     </div>
 
 </body>
