@@ -26,7 +26,7 @@
             overflow-x: hidden;
         }
 
-        /* OVERLAY HALAMAN BUKA UNDANGAN (Agar Musik Lolos Autoplay Browser) */
+        /* OVERLAY BUKA UNDANGAN */
         .cover-overlay {
             position: fixed;
             top: 0;
@@ -75,7 +75,7 @@
             transform: scale(1.05);
         }
 
-        /* Tombol Musik Melayang */
+        /* TOMBOL MUSIK MELAYANG */
         .music-btn {
             position: fixed;
             bottom: 20px;
@@ -104,7 +104,7 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Card Utama */
+        /* CARD UTAMA */
         .card {
             max-width: 650px;
             width: 100%;
@@ -129,7 +129,7 @@
             pointer-events: none;
         }
 
-        /* Ukiran Bali SVG */
+        /* UKIRAN BALI SVG */
         .ornament-svg {
             width: 100%;
             max-width: 280px;
@@ -262,7 +262,7 @@
 </head>
 <body>
 
-    <!-- OVERLAY "BUKA UNDANGAN" -->
+    <!-- COVER BUKA UNDANGAN -->
     <div class="cover-overlay" id="coverOverlay">
         <div class="symbol">ᬒᬵ</div>
         <h1 class="cover-title">UNDANGAN MEPANDES</h1>
@@ -272,9 +272,9 @@
         </button>
     </div>
 
-    <!-- AUDIO PEMANGGIL SOUND -->
+    <!-- AUDIO PEMANGGIL FILE LOKAL -->
     <audio id="bgMusic" loop preload="auto">
-        <source src="https://raw.githubusercontent.com/dina681/undangan/main/sound%20mentah.mp3" type="audio/mpeg">
+        <source src="sound mentah.mp3" type="audio/mpeg">
     </audio>
 
     <!-- TOMBOL KONTROL MUSIK -->
@@ -358,14 +358,13 @@
         </div>
     </div>
 
-    <!-- SCRIPT AUDIO FIX -->
+    <!-- SCRIPT KONTROL AUDIO -->
     <script>
         const audio = document.getElementById('bgMusic');
         const musicBtn = document.getElementById('musicBtn');
         const coverOverlay = document.getElementById('coverOverlay');
         let isPlaying = false;
 
-        // Fungsi saat tombol Buka Undangan diklik
         function openInvitation() {
             coverOverlay.classList.add('hide');
             playAudio();
@@ -377,7 +376,7 @@
                 musicBtn.classList.add('playing');
                 musicBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
             }).catch((err) => {
-                console.log("Autoplay error:", err);
+                console.log("Audio play error:", err);
             });
         }
 
