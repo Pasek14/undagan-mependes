@@ -59,7 +59,7 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Card Utama dengan Background Putih */
+        /* Card Utama */
         .card {
             max-width: 650px;
             width: 100%;
@@ -79,7 +79,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Garis Bingkai Emas Presisi */
+        /* Bingkai Emas */
         .border-frame {
             position: absolute;
             top: 15px;
@@ -91,7 +91,7 @@
             pointer-events: none;
         }
 
-        /* UKIRAN BALI EMAS (SVG Vektor Dalam Kode) */
+        /* UKIRAN BALI EMAS (SVG) */
         .ornament-svg {
             width: 100%;
             max-width: 280px;
@@ -138,7 +138,7 @@
             margin: 0 auto 25px;
         }
 
-        /* Judul Mepandes Warna Emas Tepat di Tengah */
+        /* Judul Emas */
         .title-container {
             margin: 15px 0 25px;
             text-align: center;
@@ -268,15 +268,14 @@
 </head>
 <body>
 
-    <!-- PEMANGGIL AUDIO SOUND MENTAH.MP3 -->
-    <audio id="bgMusic" loop>
-        <!-- UBAH 'USERNAME' DAN 'REPOSITORY' SESUAI AKUN GITHUB ANDA -->
-        <source src="https://raw.githubusercontent.com/USERNAME/REPOSITORY/main/sound%20mentah.mp3" type="audio/mpeg">
+    <!-- PEMANGGIL AUDIO SOUND DARI GITHUB DINA681 -->
+    <audio id="bgMusic" loop autoplay>
+        <source src="https://raw.githubusercontent.com/dina681/undangan/main/sound%20mentah.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- TOMBOL KONTROL MUSIK FLATING -->
-    <div class="music-btn" id="musicBtn" onclick="toggleMusic()">
-        <i class="fa-solid fa-music"></i>
+    <!-- TOMBOL PAUSE/PLAY DI POJOK KANAN BAWAH -->
+    <div class="music-btn playing" id="musicBtn" onclick="toggleMusic()">
+        <i class="fa-solid fa-pause"></i>
     </div>
 
     <div class="card">
@@ -363,31 +362,49 @@
 
     </div>
 
-    <!-- SCRIPT KONTROL AUDIO -->
+    <!-- SCRIPT AUTO-PLAY & KONTROL MUSIK -->
     <script>
         const audio = document.getElementById('bgMusic');
         const musicBtn = document.getElementById('musicBtn');
         let isPlaying = false;
+
+        function playAudio() {
+            audio.play().then(() => {
+                isPlaying = true;
+                musicBtn.classList.add('playing');
+                musicBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+            }).catch(() => {
+                // Jika browser memblokir auto-play tanpa interaksi, pemicu cadangan saat ada interaksi pertama
+                isPlaying = false;
+                musicBtn.classList.remove('playing');
+                musicBtn.innerHTML = '<i class="fa-solid fa-music"></i>';
+            });
+        }
 
         function toggleMusic() {
             if (isPlaying) {
                 audio.pause();
                 musicBtn.classList.remove('playing');
                 musicBtn.innerHTML = '<i class="fa-solid fa-music"></i>';
+                isPlaying = false;
             } else {
-                audio.play();
-                musicBtn.classList.add('playing');
-                musicBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+                playAudio();
             }
-            isPlaying = !isPlaying;
         }
 
-        // Putar audio otomatis saat pengunjung menyentuh/mengklik layar pertama kali
-        document.addEventListener('click', function() {
-            if (!isPlaying) {
-                toggleMusic();
-            }
-        }, { once: true });
+        // Jalankan audio otomatis saat halaman selesai dimuat
+        window.addEventListener('DOMContentLoaded', () => {
+            playAudio();
+        });
+
+        // Pengaman ekstra: Memutar audio pada sentuhan/scroll pertama jika browser HP memperketat aturan Autoplay
+        ['click', 'touchstart', 'scroll'].forEach(event => {
+            document.addEventListener(event, function() {
+                if (!isPlaying) {
+                    playAudio();
+                }
+            }, { once: true });
+        });
     </script>
 </body>
 </html>
