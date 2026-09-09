@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Undangan Manusa Yadnya Mepandes</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome untuk ikon musik -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -24,9 +23,59 @@
             align-items: center;
             min-height: 100vh;
             padding: 30px 15px;
+            overflow-x: hidden;
         }
 
-        /* Tombol Musik Interaktif Floating */
+        /* OVERLAY HALAMAN BUKA UNDANGAN (Agar Musik Lolos Autoplay Browser) */
+        .cover-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .cover-overlay.hide {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .cover-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: #c59b27;
+            margin-bottom: 10px;
+        }
+
+        .btn-open {
+            background: linear-gradient(135deg, #d4af37 0%, #a87e18 100%);
+            color: #fff;
+            border: none;
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(168, 126, 24, 0.3);
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-open:hover {
+            transform: scale(1.05);
+        }
+
+        /* Tombol Musik Melayang */
         .music-btn {
             position: fixed;
             bottom: 20px;
@@ -44,10 +93,6 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 999;
             transition: all 0.3s ease;
-        }
-
-        .music-btn:hover {
-            transform: scale(1.1);
         }
 
         .music-btn.playing {
@@ -69,17 +114,10 @@
             text-align: center;
             position: relative;
             box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
-            animation: fadeIn 1s ease-out;
             border: 1px solid #e8dec8;
             overflow: hidden;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Bingkai Emas */
         .border-frame {
             position: absolute;
             top: 15px;
@@ -91,7 +129,7 @@
             pointer-events: none;
         }
 
-        /* UKIRAN BALI EMAS (SVG) */
+        /* Ukiran Bali SVG */
         .ornament-svg {
             width: 100%;
             max-width: 280px;
@@ -100,17 +138,13 @@
             margin: 0 auto;
         }
 
-        .ornament-top {
-            margin-bottom: 20px;
+        .ornament-top { margin-bottom: 20px; }
+        .ornament-bottom { 
+            margin-top: 25px; 
+            margin-bottom: 10px; 
+            transform: rotate(180deg); 
         }
 
-        .ornament-bottom {
-            margin-top: 25px;
-            margin-bottom: 10px;
-            transform: rotate(180deg);
-        }
-
-        /* Header & Typography */
         .symbol {
             font-size: 2.8rem;
             color: #c59b27;
@@ -118,16 +152,13 @@
             display: inline-block;
         }
 
-        h1, h2, h3 {
-            font-family: 'Cinzel', serif;
-        }
+        h1, h2, h3 { font-family: 'Cinzel', serif; }
 
         .opening {
             font-size: 1.6rem;
             font-weight: 700;
             color: #c59b27;
             margin-bottom: 20px;
-            letter-spacing: 1px;
         }
 
         .intro-text {
@@ -138,11 +169,7 @@
             margin: 0 auto 25px;
         }
 
-        /* Judul Emas */
-        .title-container {
-            margin: 15px 0 25px;
-            text-align: center;
-        }
+        .title-container { margin: 15px 0 25px; }
 
         .title {
             font-size: 2.2rem;
@@ -163,7 +190,6 @@
             text-transform: uppercase;
         }
 
-        /* Daftar Nama Putra Putri */
         .name-container {
             display: flex;
             flex-direction: column;
@@ -180,18 +206,8 @@
             font-size: 1.05rem;
             font-weight: 700;
             color: #222;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
         }
 
-        .name-card:hover {
-            border-color: #c59b27;
-            background: #ffffff;
-            transform: scale(1.01);
-            box-shadow: 0 4px 15px rgba(197, 155, 39, 0.12);
-        }
-
-        /* Info Orang Tua */
         .parents {
             font-size: 0.95rem;
             line-height: 1.8;
@@ -199,12 +215,8 @@
             margin: 20px 0 30px;
         }
 
-        .parents strong {
-            color: #1a1a1a;
-            font-size: 1.05rem;
-        }
+        .parents strong { color: #1a1a1a; font-size: 1.05rem; }
 
-        /* Box Waktu & Lokasi */
         .info-box {
             background: #faf8f3;
             border: 1px solid #eee1c5;
@@ -225,7 +237,6 @@
             display: block;
         }
 
-        /* Tombol Google Maps */
         .btn-map {
             display: inline-block;
             background: linear-gradient(135deg, #d4af37 0%, #a87e18 100%);
@@ -236,27 +247,10 @@
             padding: 14px 30px;
             border-radius: 50px;
             margin: 10px 0 25px;
-            box-shadow: 0 6px 18px rgba(168, 126, 24, 0.2);
-            transition: all 0.3s ease;
         }
 
-        .btn-map:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 22px rgba(168, 126, 24, 0.3);
-        }
-
-        .closing-text {
-            font-size: 0.95rem;
-            line-height: 1.8;
-            color: #555;
-        }
-
-        .closing-mantra {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #c59b27;
-            margin-top: 15px;
-        }
+        .closing-text { font-size: 0.95rem; line-height: 1.8; color: #555; }
+        .closing-mantra { font-size: 1.2rem; font-weight: 700; color: #c59b27; margin-top: 15px; }
 
         @media (max-width: 480px) {
             .card { padding: 40px 20px; }
@@ -268,20 +262,30 @@
 </head>
 <body>
 
-    <!-- PEMANGGIL AUDIO SOUND DARI GITHUB DINA681 -->
-    <audio id="bgMusic" loop autoplay>
+    <!-- OVERLAY "BUKA UNDANGAN" -->
+    <div class="cover-overlay" id="coverOverlay">
+        <div class="symbol">ᬒᬵ</div>
+        <h1 class="cover-title">UNDANGAN MEPANDES</h1>
+        <p style="color: #666; margin-top: 5px;">Kepada Bapak/Ibu/Saudara/i</p>
+        <button class="btn-open" onclick="openInvitation()">
+            <i class="fa-solid fa-envelope-open" style="margin-right: 8px;"></i> Buka Undangan
+        </button>
+    </div>
+
+    <!-- AUDIO PEMANGGIL SOUND -->
+    <audio id="bgMusic" loop preload="auto">
         <source src="https://raw.githubusercontent.com/dina681/undangan/main/sound%20mentah.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- TOMBOL PAUSE/PLAY DI POJOK KANAN BAWAH -->
-    <div class="music-btn playing" id="musicBtn" onclick="toggleMusic()">
-        <i class="fa-solid fa-pause"></i>
+    <!-- TOMBOL KONTROL MUSIK -->
+    <div class="music-btn" id="musicBtn" onclick="toggleMusic()">
+        <i class="fa-solid fa-music"></i>
     </div>
 
+    <!-- CONTENT UNDANGAN -->
     <div class="card">
         <div class="border-frame"></div>
 
-        <!-- UKIRAN BALI ATAS -->
         <div class="ornament-top">
             <svg class="ornament-svg" viewBox="0 0 500 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M250 10 C230 35, 200 15, 170 30 C140 45, 120 20, 90 35 C60 50, 30 30, 0 50 C30 55, 60 40, 90 45 C120 50, 140 30, 170 40 C200 50, 230 25, 250 45 C270 25, 300 50, 330 40 C360 30, 380 50, 410 45 C440 40, 470 55, 500 50 C470 30, 440 50, 410 35 C380 20, 360 45, 330 30 C300 15, 270 35, 250 10 Z" fill="url(#goldGradient)"/>
@@ -297,7 +301,6 @@
             </svg>
         </div>
 
-        <!-- Om Swastyastu -->
         <div class="symbol">ᬒᬵ</div>
         <h2 class="opening">Om Swastyastu</h2>
         
@@ -305,13 +308,11 @@
             Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa, kami mengundang Bapak/Ibu/Saudara/i pada Upacara Manusa Yadnya Mepandes (Potong Gigi) putra-putri kami:
         </p>
 
-        <!-- Judul Utama -->
         <div class="title-container">
             <h1 class="title">UPACARA MEPANDES</h1>
             <div class="subtitle">POTONG GIGI</div>
         </div>
 
-        <!-- Daftar Nama Putra Putri -->
         <div class="name-container">
             <div class="name-card">NI KADEK WIWIK ASTUTIARI</div>
             <div class="name-card">NI KOMANG APRIANTI</div>
@@ -319,13 +320,11 @@
             <div class="name-card">I GEDE PANDE WIRAGUNA</div>
         </div>
 
-        <!-- Orang Tua -->
         <div class="parents">
             Putra-putri dari Pasangan:<br>
             <strong>I NYOMAN SADRA & NI LUH SULATRI</strong>
         </div>
 
-        <!-- Waktu & Lokasi -->
         <div class="info-box">
             <span class="info-title">WAKTU & LOKASI ACARA</span>
             📅 <strong>Hari/Tanggal:</strong> Selasa, 15 September 2026<br>
@@ -337,14 +336,12 @@
             📍 Buka Petunjuk Google Maps
         </a>
 
-        <!-- Penutup -->
         <p class="closing-text">
             Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir memberikan doa restu. Terima kasih.
         </p>
 
         <h3 class="closing-mantra">Om Shanti, Shanti, Shanti Om</h3>
 
-        <!-- UKIRAN BALI BAWAH -->
         <div class="ornament-bottom">
             <svg class="ornament-svg" viewBox="0 0 500 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M250 10 C230 35, 200 15, 170 30 C140 45, 120 20, 90 35 C60 50, 30 30, 0 50 C30 55, 60 40, 90 45 C120 50, 140 30, 170 40 C200 50, 230 25, 250 45 C270 25, 300 50, 330 40 C360 30, 380 50, 410 45 C440 40, 470 55, 500 50 C470 30, 440 50, 410 35 C380 20, 360 45, 330 30 C300 15, 270 35, 250 10 Z" fill="url(#goldGradient2)"/>
@@ -359,25 +356,28 @@
                 </defs>
             </svg>
         </div>
-
     </div>
 
-    <!-- SCRIPT AUTO-PLAY & KONTROL MUSIK -->
+    <!-- SCRIPT AUDIO FIX -->
     <script>
         const audio = document.getElementById('bgMusic');
         const musicBtn = document.getElementById('musicBtn');
+        const coverOverlay = document.getElementById('coverOverlay');
         let isPlaying = false;
+
+        // Fungsi saat tombol Buka Undangan diklik
+        function openInvitation() {
+            coverOverlay.classList.add('hide');
+            playAudio();
+        }
 
         function playAudio() {
             audio.play().then(() => {
                 isPlaying = true;
                 musicBtn.classList.add('playing');
                 musicBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
-            }).catch(() => {
-                // Jika browser memblokir auto-play tanpa interaksi, pemicu cadangan saat ada interaksi pertama
-                isPlaying = false;
-                musicBtn.classList.remove('playing');
-                musicBtn.innerHTML = '<i class="fa-solid fa-music"></i>';
+            }).catch((err) => {
+                console.log("Autoplay error:", err);
             });
         }
 
@@ -391,20 +391,6 @@
                 playAudio();
             }
         }
-
-        // Jalankan audio otomatis saat halaman selesai dimuat
-        window.addEventListener('DOMContentLoaded', () => {
-            playAudio();
-        });
-
-        // Pengaman ekstra: Memutar audio pada sentuhan/scroll pertama jika browser HP memperketat aturan Autoplay
-        ['click', 'touchstart', 'scroll'].forEach(event => {
-            document.addEventListener(event, function() {
-                if (!isPlaying) {
-                    playAudio();
-                }
-            }, { once: true });
-        });
     </script>
 </body>
 </html>
