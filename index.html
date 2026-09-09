@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Undangan Manusa Yadnya Mepandes</title>
+    
+    <!-- FONTS & ICONS -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS ANIMATION LIBRARY CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         * {
@@ -22,7 +27,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px 15px;
+            padding: 15px 10px;
             overflow-x: hidden;
         }
 
@@ -52,7 +57,7 @@
 
         .cover-title {
             font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: #c59b27;
             margin-bottom: 10px;
         }
@@ -62,7 +67,7 @@
             color: #fff;
             border: none;
             padding: 14px 32px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             border-radius: 50px;
             cursor: pointer;
@@ -80,15 +85,15 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            width: 48px;
-            height: 48px;
+            width: 45px;
+            height: 45px;
             background: linear-gradient(135deg, #d4af37, #997a15);
             color: #ffffff;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 999;
@@ -104,37 +109,25 @@
             to { transform: rotate(360deg); }
         }
 
-        /* CARD UTAMA UNDANGAN */
+        /* CARD UTAMA UNDANGAN - GARIS PINGGIR TELAH DIHAPUS */
         .card {
-            max-width: 650px;
+            max-width: 500px;
             width: 100%;
             background: #ffffff;
             border-radius: 20px;
-            padding: 30px 25px 80px 25px; /* Padding bawah diperbesar agar tidak menutupi gambar sudut */
+            padding: 25px 20px 70px 20px;
             text-align: center;
             position: relative;
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
-            border: 1px solid #e8dec8;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: none; /* Dihapus garis pinggir luar */
             overflow: hidden;
-        }
-
-        .border-frame {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            right: 15px;
-            bottom: 15px;
-            border: 1px solid #d4af37;
-            border-radius: 12px;
-            pointer-events: none;
-            z-index: 2;
         }
 
         /* ORNAMEN ATAS */
         .ornament-wrapper {
             width: 100%;
-            max-width: 380px;
-            height: 90px;
+            max-width: 320px;
+            height: 75px;
             margin: 0 auto 10px auto;
             overflow: hidden;
             display: flex;
@@ -148,7 +141,7 @@
             display: block;
         }
 
-        /* ORNAMEN 2 BAWAH (BINGKAI SUDUT) */
+        /* ORNAMEN 2 BAWAH */
         .ornament-bottom-img {
             position: absolute;
             bottom: 0;
@@ -163,7 +156,7 @@
         h1, h2, h3 { font-family: 'Cinzel', serif; }
 
         .opening {
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             font-weight: 700;
             color: #c59b27;
             margin-bottom: 12px;
@@ -172,36 +165,36 @@
         }
 
         .intro-text {
-            font-size: 0.95rem;
-            line-height: 1.7;
+            font-size: 0.88rem;
+            line-height: 1.6;
             color: #555;
-            max-width: 520px;
+            max-width: 100%;
             margin: 0 auto 20px;
             position: relative;
             z-index: 3;
         }
 
         .title-container { 
-            margin: 15px 0 25px; 
+            margin: 15px 0 20px; 
             position: relative;
             z-index: 3;
         }
 
         .title {
-            font-size: 2.1rem;
+            font-size: 1.7rem;
             font-weight: 800;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             background: linear-gradient(135deg, #d4af37 0%, #997a15 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
         .subtitle {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 700;
-            letter-spacing: 6px;
+            letter-spacing: 5px;
             color: #8c6d15;
             text-transform: uppercase;
         }
@@ -209,8 +202,8 @@
         .name-container {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin: 25px 0;
+            gap: 10px;
+            margin: 20px 0;
             position: relative;
             z-index: 3;
         }
@@ -218,33 +211,34 @@
         .name-card {
             background: #faf8f3;
             border: 1px solid #eee1c5;
-            padding: 14px 20px;
+            padding: 12px 15px;
             border-radius: 10px;
             font-family: 'Cinzel', serif;
-            font-size: 1.05rem;
+            font-size: 0.92rem;
             font-weight: 700;
             color: #222;
+            transition: transform 0.3s ease;
         }
 
         .parents {
-            font-size: 0.95rem;
-            line-height: 1.8;
+            font-size: 0.88rem;
+            line-height: 1.7;
             color: #666;
-            margin: 20px 0 30px;
+            margin: 20px 0 25px;
             position: relative;
             z-index: 3;
         }
 
-        .parents strong { color: #1a1a1a; font-size: 1.05rem; }
+        .parents strong { color: #1a1a1a; font-size: 0.98rem; }
 
         .info-box {
             background: #faf8f3;
             border: 1px solid #eee1c5;
             border-radius: 12px;
-            padding: 25px;
-            margin: 25px 0;
-            line-height: 2;
-            font-size: 0.98rem;
+            padding: 20px 15px;
+            margin: 20px 0;
+            line-height: 1.8;
+            font-size: 0.88rem;
             color: #333;
             position: relative;
             z-index: 3;
@@ -253,9 +247,9 @@
         .info-title {
             font-family: 'Cinzel', serif;
             color: #c59b27;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: block;
         }
 
@@ -265,36 +259,30 @@
             color: #ffffff;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95rem;
-            padding: 14px 30px;
+            font-size: 0.88rem;
+            padding: 12px 25px;
             border-radius: 50px;
-            margin: 10px 0 25px;
+            margin: 10px 0 20px;
             position: relative;
             z-index: 3;
+            box-shadow: 0 4px 15px rgba(168, 126, 24, 0.2);
         }
 
         .closing-text { 
-            font-size: 0.95rem; 
-            line-height: 1.8; 
+            font-size: 0.88rem; 
+            line-height: 1.7; 
             color: #555; 
             position: relative;
             z-index: 3;
         }
 
         .closing-mantra { 
-            font-size: 1.2rem; 
+            font-size: 1.1rem; 
             font-weight: 700; 
             color: #c59b27; 
-            margin-top: 15px; 
+            margin-top: 12px; 
             position: relative;
             z-index: 3;
-        }
-
-        @media (max-width: 480px) {
-            .card { padding: 20px 18px 60px 18px; }
-            .title { font-size: 1.6rem; }
-            .name-card { font-size: 0.95rem; }
-            .ornament-wrapper { height: 70px; }
         }
     </style>
 </head>
@@ -303,7 +291,7 @@
     <!-- COVER BUKA UNDANGAN -->
     <div class="cover-overlay" id="coverOverlay">
         <h1 class="cover-title">UNDANGAN MEPANDES</h1>
-        <p style="color: #666; margin-top: 5px;">Kepada Bapak/Ibu/Saudara/i</p>
+        <p style="color: #666; margin-top: 5px; font-size: 0.9rem;">Kepada Bapak/Ibu/Saudara/i</p>
         <button class="btn-open" onclick="openInvitation()">
             <i class="fa-solid fa-envelope-open" style="margin-right: 8px;"></i> Buka Undangan
         </button>
@@ -321,59 +309,63 @@
 
     <!-- CONTENT UNDANGAN -->
     <div class="card">
-        <div class="border-frame"></div>
 
         <!-- ORNAMEN ATAS -->
-        <div class="ornament-wrapper">
+        <div class="ornament-wrapper" data-aos="zoom-in" data-aos-duration="1000">
             <img src="ornamen.png" alt="Ornamen Bali Top" class="ornament-img">
         </div>
 
         <!-- KONTEN UTAMA -->
-        <h2 class="opening">OM SWASTYASTU</h2>
+        <h2 class="opening" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">OM SWASTYASTU</h2>
         
-        <p class="intro-text">
+        <p class="intro-text" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
             Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa, kami mengundang Bapak/Ibu/Saudara/i pada Upacara Manusa Yadnya Mepandes (Potong Gigi) putra-putri kami:
         </p>
 
-        <div class="title-container">
+        <div class="title-container" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="400">
             <h1 class="title">UPACARA MEPANDES</h1>
             <div class="subtitle">POTONG GIGI</div>
         </div>
 
         <div class="name-container">
-            <div class="name-card">NI KADEK WIWIK ASTUTIARI</div>
-            <div class="name-card">NI KOMANG APRIANTI</div>
-            <div class="name-card">I KETUT PANDE ADI PUTRA</div>
-            <div class="name-card">I GEDE PANDE WIRAGUNA</div>
+            <div class="name-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">NI KADEK WIWIK ASTUTIARI</div>
+            <div class="name-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">NI KOMANG APRIANTI</div>
+            <div class="name-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="700">I KETUT PANDE ADI PUTRA</div>
+            <div class="name-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="800">I GEDE PANDE WIRAGUNA</div>
         </div>
 
-        <div class="parents">
+        <div class="parents" data-aos="fade-up" data-aos-duration="1000">
             Putra-putri dari Pasangan:<br>
             <strong>I NYOMAN SADRA & NI LUH SULATRI</strong>
         </div>
 
-        <div class="info-box">
+        <div class="info-box" data-aos="flip-up" data-aos-duration="1000">
             <span class="info-title">WAKTU & LOKASI ACARA</span>
             📅 <strong>Hari/Tanggal:</strong> Selasa, 15 September 2026<br>
             ⏰ <strong>Waktu:</strong> 16:00 WITA – Selesai<br>
             📍 <strong>Lokasi:</strong> Br. Bengkel Antiga Kelod Gg. Nagasari
         </div>
 
-        <a href="https://maps.google.com/?q=Br.+Bengkel+Antiga+Kelod+Gg.+Nagasari" target="_blank" class="btn-map">
-            📍 Buka Petunjuk Google Maps
-        </a>
+        <div data-aos="zoom-in" data-aos-duration="800">
+            <a href="https://maps.google.com/?q=Br.+Bengkel+Antiga+Kelod+Gg.+Nagasari" target="_blank" class="btn-map">
+                📍 Buka Petunjuk Google Maps
+            </a>
+        </div>
 
-        <p class="closing-text">
+        <p class="closing-text" data-aos="fade-up" data-aos-duration="1000">
             Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir memberikan doa restu. Terima kasih.
         </p>
 
-        <h3 class="closing-mantra">Om Shanti, Shanti, Shanti Om</h3>
+        <h3 class="closing-mantra" data-aos="fade-up" data-aos-duration="1000">Om Shanti, Shanti, Shanti Om</h3>
 
-        <!-- ORNAMEN 2 BAWAH (DIPASANG DI SUDUT KIRI & KANAN BAWAH) -->
-        <img src="ornamen2.png" alt="Ornamen Bali Bottom" class="ornament-bottom-img">
+        <!-- ORNAMEN 2 BAWAH -->
+        <img src="ornamen2.png" alt="Ornamen Bali Bottom" class="ornament-bottom-img" data-aos="fade-up" data-aos-duration="1000">
     </div>
 
-    <!-- SCRIPT AUDIO -->
+    <!-- AOS ANIMATION SCRIPT -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- SCRIPT AUDIO & ANIMATION INIT -->
     <script>
         const audio = document.getElementById('bgMusic');
         const musicBtn = document.getElementById('musicBtn');
@@ -383,6 +375,12 @@
         function openInvitation() {
             coverOverlay.classList.add('hide');
             playAudio();
+            
+            // Inisialisasi animasi AOS saat buka undangan
+            AOS.init({
+                once: true,
+                duration: 900
+            });
         }
 
         function playAudio() {
