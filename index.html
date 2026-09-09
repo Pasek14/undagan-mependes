@@ -20,59 +20,63 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 40px 15px;
+            padding: 30px 15px;
         }
 
-        /* Card Utama dengan Frame Ganda & Shadow Premium */
+        /* Card Utama dengan Background Putih */
         .card {
-            max-width: 680px;
+            max-width: 650px;
             width: 100%;
             background: #ffffff;
-            border: 2px solid #d4af37;
             border-radius: 20px;
-            padding: 50px 35px;
+            padding: 60px 40px;
             text-align: center;
             position: relative;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
-            animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
+            animation: fadeIn 1s ease-out;
+            border: 1px solid #e8dec8;
         }
 
-        /* Inner Border untuk Efek Bingkai Klasik */
-        .card::after {
-            content: '';
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ORNAMEN UKIRAN BALI DI PINGGIR BINGKAI CARD */
+        .balinese-corner {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            border: 1px solid #e8d595;
+            width: 50px;
+            height: 50px;
+            color: #c59b27;
+            font-size: 28px;
+            line-height: 50px;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .top-left { top: 12px; left: 15px; text-align: left; }
+        .top-right { top: 12px; right: 15px; text-align: right; }
+        .bottom-left { bottom: 12px; left: 15px; text-align: left; }
+        .bottom-right { bottom: 12px; right: 15px; text-align: right; }
+
+        /* Garis Bingkai Motif Ukir di Pinggir */
+        .balinese-border-frame {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 2px double #d4af37;
             border-radius: 12px;
             pointer-events: none;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Simbol & Mantra Opening */
+        /* Header / Opening */
         .symbol {
             font-size: 3rem;
             color: #c59b27;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             display: inline-block;
-            text-shadow: 0 4px 10px rgba(197, 155, 39, 0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .symbol:hover {
-            transform: scale(1.1);
         }
 
         h1, h2, h3 {
@@ -84,125 +88,101 @@
             font-weight: 700;
             color: #c59b27;
             margin-bottom: 20px;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
         }
 
         .intro-text {
             font-size: 0.98rem;
             line-height: 1.8;
-            color: #555555;
-            max-width: 540px;
-            margin: 0 auto 35px;
+            color: #555;
+            max-width: 520px;
+            margin: 0 auto 30px;
         }
 
-        /* Divider Hiasan Khas */
+        /* Pembatas Motif Bali */
         .divider {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin: 35px 0;
-        }
-
-        .divider-line {
-            height: 1px;
-            width: 80px;
-            background: linear-gradient(90deg, transparent, #d4af37, transparent);
-        }
-
-        .divider-icon {
             color: #c59b27;
-            font-size: 0.9rem;
+            font-size: 1.2rem;
+            margin: 25px 0;
+            letter-spacing: 8px;
         }
 
-        /* Section Judul Acara */
+        /* FONT JUDUL MEPANDES WARNA EMAS KLASIK & TEPAT DI TENGAH */
+        .title-container {
+            margin: 20px 0 30px;
+            text-align: center;
+        }
+
         .title {
             font-size: 2.2rem;
             font-weight: 800;
-            color: #1a1a1a;
             letter-spacing: 3px;
-            margin-bottom: 6px;
+            background: linear-gradient(135deg, #d4af37 0%, #997a15 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            margin-bottom: 5px;
         }
 
         .subtitle {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 700;
-            letter-spacing: 5px;
-            color: #c59b27;
-            margin-bottom: 35px;
+            letter-spacing: 6px;
+            color: #8c6d15;
             text-transform: uppercase;
         }
 
-        /* Grid / Card Nama Putra-Putri */
+        /* Daftar Nama Putra Putri */
         .name-container {
             display: flex;
             flex-direction: column;
-            gap: 14px;
-            margin: 30px 0;
+            gap: 12px;
+            margin: 25px 0;
         }
 
         .name-card {
-            background: #fdfbf7;
-            border: 1px solid #efe3c3;
-            padding: 16px 20px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            background: #faf8f3;
+            border: 1px solid #eee1c5;
+            padding: 14px 20px;
+            border-radius: 10px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #222;
+            letter-spacing: 0.5px;
             transition: all 0.3s ease;
         }
 
         .name-card:hover {
-            background: #ffffff;
             border-color: #c59b27;
-            transform: translateX(4px);
-            box-shadow: 0 8px 20px rgba(197, 155, 39, 0.12);
-        }
-
-        .name-number {
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-            color: #c59b27;
-            font-size: 1.1rem;
-            width: 30px;
-            text-align: left;
-        }
-
-        .name-text {
-            font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #1a1a1a;
-            letter-spacing: 0.5px;
-            text-align: right;
-            flex-grow: 1;
+            background: #ffffff;
+            transform: scale(1.01);
+            box-shadow: 0 4px 15px rgba(197, 155, 39, 0.12);
         }
 
         /* Info Orang Tua */
         .parents {
             font-size: 0.95rem;
             line-height: 1.8;
-            color: #666666;
-            margin: 30px 0;
-            padding: 20px;
-            background: rgba(212, 175, 55, 0.04);
-            border-radius: 12px;
+            color: #666;
+            margin: 25px 0 35px;
         }
 
         .parents strong {
             color: #1a1a1a;
             font-size: 1.05rem;
-            font-weight: 700;
         }
 
-        /* Box Info Waktu & Lokasi */
+        /* Box Waktu & Lokasi */
         .info-box {
-            background: #fdfbf7;
-            border: 1px solid #efe3c3;
-            border-radius: 16px;
-            padding: 28px;
-            margin: 35px 0;
-            text-align: center;
+            background: #faf8f3;
+            border: 1px solid #eee1c5;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            line-height: 2;
+            font-size: 0.98rem;
+            color: #333;
         }
 
         .info-title {
@@ -210,77 +190,62 @@
             color: #c59b27;
             font-size: 1.1rem;
             font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 18px;
+            margin-bottom: 10px;
             display: block;
         }
 
-        .info-details {
-            font-size: 0.98rem;
-            line-height: 2;
-            color: #333333;
-        }
-
-        /* Tombol Maps Elegant */
+        /* Tombol Google Maps */
         .btn-map {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            display: inline-block;
             background: linear-gradient(135deg, #d4af37 0%, #a87e18 100%);
             color: #ffffff;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
-            padding: 15px 32px;
+            padding: 14px 30px;
             border-radius: 50px;
-            margin-top: 10px;
-            margin-bottom: 25px;
-            box-shadow: 0 8px 20px rgba(168, 126, 24, 0.25);
+            margin: 10px 0 30px;
+            box-shadow: 0 6px 18px rgba(168, 126, 24, 0.2);
             transition: all 0.3s ease;
         }
 
         .btn-map:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(168, 126, 24, 0.35);
-            background: linear-gradient(135deg, #e5be48 0%, #b88a1c 100%);
+            box-shadow: 0 10px 22px rgba(168, 126, 24, 0.3);
         }
 
         .closing-text {
             font-size: 0.95rem;
             line-height: 1.8;
-            color: #555555;
-            margin-top: 25px;
+            color: #555;
         }
 
         .closing-mantra {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: #c59b27;
             margin-top: 20px;
         }
 
-        /* Media Query HP */
-        @media (max-width: 500px) {
-            .card {
-                padding: 40px 20px;
-            }
-            .title {
-                font-size: 1.7rem;
-            }
-            .name-text {
-                font-size: 0.95rem;
-            }
-            .name-card {
-                padding: 14px 16px;
-            }
+        @media (max-width: 480px) {
+            .card { padding: 45px 20px; }
+            .title { font-size: 1.7rem; }
+            .name-card { font-size: 0.95rem; }
+            .balinese-corner { font-size: 22px; }
         }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <!-- Header / Om Swastyastu -->
+        <!-- BINGKAI & ORNAMEN PINGGIR KHAS BALI -->
+        <div class="balinese-border-frame"></div>
+        <div class="balinese-corner top-left">꧁</div>
+        <div class="balinese-corner top-right">꧂</div>
+        <div class="balinese-corner bottom-left">꧁</div>
+        <div class="balinese-corner bottom-right">꧂</div>
+
+        <!-- Om Swastyastu -->
         <div class="symbol">ᬒᬵ</div>
         <h2 class="opening">Om Swastyastu</h2>
         
@@ -288,63 +253,40 @@
             Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa, kami mengundang Bapak/Ibu/Saudara/i pada Upacara Manusa Yadnya Mepandes (Potong Gigi) putra-putri kami:
         </p>
 
-        <!-- Pembatas Elegan -->
-        <div class="divider">
-            <div class="divider-line"></div>
-            <div class="divider-icon">❖ ❖ ❖</div>
-            <div class="divider-line"></div>
+        <div class="divider">❖ ❖ ❖</div>
+
+        <!-- JUDUL TENGAH DENGAN WARNA FON EMAS -->
+        <div class="title-container">
+            <h1 class="title">UPACARA MEPANDES</h1>
+            <div class="subtitle">POTONG GIGI</div>
         </div>
 
-        <!-- Judul Utama -->
-        <h1 class="title">UPACARA MEPANDES</h1>
-        <div class="subtitle">POTONG GIGI</div>
-
-        <!-- Kartu Nama Putra Putri -->
+        <!-- Daftar Nama Putra Putri -->
         <div class="name-container">
-            <div class="name-card">
-                <span class="name-number">01</span>
-                <span class="name-text">NI KADEK WIWIK ASTUTIARI</span>
-            </div>
-            <div class="name-card">
-                <span class="name-number">02</span>
-                <span class="name-text">NI KOMANG APRIANTI</span>
-            </div>
-            <div class="name-card">
-                <span class="name-number">03</span>
-                <span class="name-text">I KETUT PANDE ADI PUTRA</span>
-            </div>
-            <div class="name-card">
-                <span class="name-number">04</span>
-                <span class="name-text">I GEDE PANDE WIRAGUNA</span>
-            </div>
+            <div class="name-card">NI KADEK WIWIK ASTUTIARI</div>
+            <div class="name-card">NI KOMANG APRIANTI</div>
+            <div class="name-card">I KETUT PANDE ADI PUTRA</div>
+            <div class="name-card">I GEDE PANDE WIRAGUNA</div>
         </div>
 
-        <!-- Info Orang Tua -->
+        <!-- Orang Tua -->
         <div class="parents">
             Putra-putri dari Pasangan:<br>
             <strong>I NYOMAN SADRA & NI LUH SULATRI</strong>
         </div>
 
-        <!-- Pembatas Elegan -->
-        <div class="divider">
-            <div class="divider-line"></div>
-            <div class="divider-icon">❖ ❖ ❖</div>
-            <div class="divider-line"></div>
-        </div>
+        <div class="divider">❖ ❖ ❖</div>
 
         <!-- Waktu & Lokasi -->
         <div class="info-box">
             <span class="info-title">WAKTU & LOKASI ACARA</span>
-            <div class="info-details">
-                📅 <strong>Hari/Tanggal:</strong> Selasa, 15 September 2026<br>
-                ⏰ <strong>Waktu:</strong> 16:00 WITA – Selesai<br>
-                📍 <strong>Lokasi:</strong> Br. Bengkel Antiga Kelod Gg. Nagasari
-            </div>
+            📅 <strong>Hari/Tanggal:</strong> Selasa, 15 September 2026<br>
+            ⏰ <strong>Waktu:</strong> 16:00 WITA – Selesai<br>
+            📍 <strong>Lokasi:</strong> Br. Bengkel Antiga Kelod Gg. Nagasari
         </div>
 
-        <!-- Tombol Peta -->
         <a href="https://maps.google.com/?q=Br.+Bengkel+Antiga+Kelod+Gg.+Nagasari" target="_blank" class="btn-map">
-            <span>📍</span> Petunjuk Ke Lokasi (Google Maps)
+            📍 Buka Petunjuk Google Maps
         </a>
 
         <!-- Penutup -->
