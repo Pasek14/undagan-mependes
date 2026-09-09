@@ -26,7 +26,7 @@
             overflow-x: hidden;
         }
 
-        /* OVERLAY BUKA UNDANGAN (Picu Musik Browser) */
+        /* OVERLAY BUKA UNDANGAN */
         .cover-overlay {
             position: fixed;
             top: 0;
@@ -129,17 +129,21 @@
             pointer-events: none;
         }
 
-        /* CONTAINER UKIRAN BALI SVG */
-        .ornament-top {
+        /* TAMPILAN GAMBAR ORNAMEN BALI */
+        .ornament-img {
             width: 100%;
-            max-width: 360px;
+            max-width: 420px;
+            height: auto;
+            display: block;
             margin: 0 auto 10px auto;
         }
 
-        .ornament-bottom {
+        .ornament-bottom-img {
             width: 100%;
-            max-width: 360px;
-            margin: 20px auto 10px auto;
+            max-width: 420px;
+            height: auto;
+            display: block;
+            margin: 25px auto 10px auto;
             transform: rotate(180deg);
         }
 
@@ -283,37 +287,8 @@
     <div class="card">
         <div class="border-frame"></div>
 
-        <!-- UKIRAN ATAS (SVG BALI DESAIN BARU) -->
-        <div class="ornament-top">
-            <svg viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; display: block;">
-                <defs>
-                    <linearGradient id="baliGold" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#f5d77f"/>
-                        <stop offset="50%" stop-color="#d4af37"/>
-                        <stop offset="100%" stop-color="#a87e18"/>
-                    </linearGradient>
-                </defs>
-                <g fill="url(#baliGold)">
-                    <!-- Bunga Utama Tengah -->
-                    <path d="M500,100 C480,70 470,40 500,20 C530,40 520,70 500,100 Z"/>
-                    <path d="M500,100 C460,80 430,70 440,110 C470,120 490,110 500,100 Z"/>
-                    <path d="M500,100 C540,80 570,70 560,110 C530,120 510,110 500,100 Z"/>
-                    <path d="M500,100 C470,110 450,140 480,150 C500,140 500,120 500,100 Z"/>
-                    <path d="M500,100 C530,110 550,140 520,150 C500,140 500,120 500,100 Z"/>
-                    <circle cx="500" cy="95" r="15"/>
-
-                    <!-- Sulur Kiri -->
-                    <path d="M440,100 C390,70 330,60 270,75 C210,90 170,130 140,120 C120,110 130,80 160,80 C190,80 200,110 230,110 C270,110 310,75 360,70 C410,65 440,85 450,95 Z"/>
-                    <path d="M380,80 C360,30 380,10 395,5 C390,25 400,50 420,65 Z"/>
-                    <path d="M350,110 C360,150 390,185 410,195 C390,180 375,150 370,125 C350,160 350,190 380,200 C360,185 350,160 350,110 Z"/>
-
-                    <!-- Sulur Kanan -->
-                    <path d="M560,100 C610,70 670,60 730,75 C790,90 830,130 860,120 C880,110 870,80 840,80 C810,80 800,110 770,110 C730,110 690,75 640,70 C590,65 560,85 550,95 Z"/>
-                    <path d="M620,80 C640,30 620,10 605,5 C610,25 600,50 580,65 Z"/>
-                    <path d="M650,110 C640,150 610,185 590,195 C610,180 625,150 630,125 C650,160 650,190 620,200 C640,185 650,160 650,110 Z"/>
-                </g>
-            </svg>
-        </div>
+        <!-- ORNAMEN BALI ATAS DARI FILE ORNAMEN.PNG -->
+        <img src="ornamen.png" alt="Ornamen Bali" class="ornament-img">
 
         <div class="symbol">ᬒᬵ</div>
         <h2 class="opening">Om Swastyastu</h2>
@@ -356,26 +331,8 @@
 
         <h3 class="closing-mantra">Om Shanti, Shanti, Shanti Om</h3>
 
-        <!-- UKIRAN BAWAH -->
-        <div class="ornament-bottom">
-            <svg viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; display: block;">
-                <use href="#baliGold"/>
-                <g fill="url(#baliGold)">
-                    <path d="M500,100 C480,70 470,40 500,20 C530,40 520,70 500,100 Z"/>
-                    <path d="M500,100 C460,80 430,70 440,110 C470,120 490,110 500,100 Z"/>
-                    <path d="M500,100 C540,80 570,70 560,110 C530,120 510,110 500,100 Z"/>
-                    <path d="M500,100 C470,110 450,140 480,150 C500,140 500,120 500,100 Z"/>
-                    <path d="M500,100 C530,110 550,140 520,150 C500,140 500,120 500,100 Z"/>
-                    <circle cx="500" cy="95" r="15"/>
-                    <path d="M440,100 C390,70 330,60 270,75 C210,90 170,130 140,120 C120,110 130,80 160,80 C190,80 200,110 230,110 C270,110 310,75 360,70 C410,65 440,85 450,95 Z"/>
-                    <path d="M380,80 C360,30 380,10 395,5 C390,25 400,50 420,65 Z"/>
-                    <path d="M350,110 C360,150 390,185 410,195 C390,180 375,150 370,125 C350,160 350,190 380,200 C360,185 350,160 350,110 Z"/>
-                    <path d="M560,100 C610,70 670,60 730,75 C790,90 830,130 860,120 C880,110 870,80 840,80 C810,80 800,110 770,110 C730,110 690,75 640,70 C590,65 560,85 550,95 Z"/>
-                    <path d="M620,80 C640,30 620,10 605,5 C610,25 600,50 580,65 Z"/>
-                    <path d="M650,110 C640,150 610,185 590,195 C610,180 625,150 630,125 C650,160 650,190 620,200 C640,185 650,160 650,110 Z"/>
-                </g>
-            </svg>
-        </div>
+        <!-- ORNAMEN BALI BAWAH DARI FILE ORNAMEN.PNG -->
+        <img src="ornamen.png" alt="Ornamen Bali" class="ornament-bottom-img">
     </div>
 
     <!-- SCRIPT AUDIO -->
