@@ -110,7 +110,7 @@
             width: 100%;
             background: #ffffff;
             border-radius: 20px;
-            padding: 20px 25px 40px 25px; /* Padding atas diperkecil */
+            padding: 30px 25px 40px 25px;
             text-align: center;
             position: relative;
             box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
@@ -129,22 +129,28 @@
             pointer-events: none;
         }
 
-        /* PERBAIKAN SPASI ORNAMEN BALI */
-        .ornament-img {
+        /* MANAJEMEN WAPPER GAMBAR DENGAN CROP PRESISI */
+        .ornament-wrapper {
             width: 100%;
             max-width: 380px;
-            height: auto;
-            display: block;
-            margin: -30px auto -110px auto; /* Margin minus untuk memotong area kosong gambar */
+            height: 90px; /* Batasi tinggi container agar bagian kosong terpotong aman */
+            margin: 0 auto 10px auto;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
         }
 
-        .ornament-bottom-img {
+        .ornament-wrapper.bottom {
+            margin: 30px auto 0 auto;
+            align-items: flex-end;
+            transform: rotate(180deg);
+        }
+
+        .ornament-img {
             width: 100%;
-            max-width: 380px;
             height: auto;
             display: block;
-            margin: -110px auto -30px auto;
-            transform: rotate(180deg);
         }
 
         h1, h2, h3 { font-family: 'Cinzel', serif; }
@@ -154,8 +160,6 @@
             font-weight: 700;
             color: #c59b27;
             margin-bottom: 12px;
-            position: relative;
-            z-index: 2;
         }
 
         .intro-text {
@@ -164,8 +168,6 @@
             color: #555;
             max-width: 520px;
             margin: 0 auto 20px;
-            position: relative;
-            z-index: 2;
         }
 
         .title-container { margin: 15px 0 25px; }
@@ -252,11 +254,10 @@
         .closing-mantra { font-size: 1.2rem; font-weight: 700; color: #c59b27; margin-top: 15px; }
 
         @media (max-width: 480px) {
-            .card { padding: 15px 18px 30px 18px; }
+            .card { padding: 20px 18px 30px 18px; }
             .title { font-size: 1.6rem; }
             .name-card { font-size: 0.95rem; }
-            .ornament-img { margin: -20px auto -80px auto; }
-            .ornament-bottom-img { margin: -80px auto -20px auto; }
+            .ornament-wrapper { height: 70px; }
         }
     </style>
 </head>
@@ -286,7 +287,9 @@
         <div class="border-frame"></div>
 
         <!-- ORNAMEN ATAS -->
-        <img src="ornamen.png" alt="Ornamen Bali" class="ornament-img">
+        <div class="ornament-wrapper">
+            <img src="ornamen.png" alt="Ornamen Bali" class="ornament-img">
+        </div>
 
         <!-- KONTEN UTAMA -->
         <h2 class="opening">OM SWASTYASTU</h2>
@@ -329,10 +332,12 @@
 
         <h3 class="closing-mantra">Om Shanti, Shanti, Shanti Om</h3>
 
-        <!-- AREA UNTUK ELEMEN BARU DI BAWAH BISA DISISIPKAN DI SINI -->
+        <!-- DISINI AREA UNTUK TAMBAH ELEMEN BARU NANTI -->
 
         <!-- ORNAMEN BAWAH -->
-        <img src="ornamen.png" alt="Ornamen Bali" class="ornament-bottom-img">
+        <div class="ornament-wrapper bottom">
+            <img src="ornamen.png" alt="Ornamen Bali" class="ornament-img">
+        </div>
     </div>
 
     <!-- SCRIPT AUDIO -->
