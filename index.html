@@ -22,7 +22,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 30px 15px;
+            padding: 20px 15px;
             overflow-x: hidden;
         }
 
@@ -110,7 +110,7 @@
             width: 100%;
             background: #ffffff;
             border-radius: 20px;
-            padding: 40px 30px;
+            padding: 20px 25px 40px 25px; /* Padding atas diperkecil */
             text-align: center;
             position: relative;
             box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
@@ -129,52 +129,49 @@
             pointer-events: none;
         }
 
-        /* TAMPILAN GAMBAR ORNAMEN BALI */
+        /* PERBAIKAN SPASI ORNAMEN BALI */
         .ornament-img {
             width: 100%;
-            max-width: 420px;
+            max-width: 380px;
             height: auto;
             display: block;
-            margin: 0 auto 10px auto;
+            margin: -30px auto -110px auto; /* Margin minus untuk memotong area kosong gambar */
         }
 
         .ornament-bottom-img {
             width: 100%;
-            max-width: 420px;
+            max-width: 380px;
             height: auto;
             display: block;
-            margin: 25px auto 10px auto;
+            margin: -110px auto -30px auto;
             transform: rotate(180deg);
-        }
-
-        .symbol {
-            font-size: 2.8rem;
-            color: #c59b27;
-            margin-bottom: 5px;
-            display: inline-block;
         }
 
         h1, h2, h3 { font-family: 'Cinzel', serif; }
 
         .opening {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: #c59b27;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 2;
         }
 
         .intro-text {
-            font-size: 0.98rem;
-            line-height: 1.8;
+            font-size: 0.95rem;
+            line-height: 1.7;
             color: #555;
             max-width: 520px;
             margin: 0 auto 20px;
+            position: relative;
+            z-index: 2;
         }
 
         .title-container { margin: 15px 0 25px; }
 
         .title {
-            font-size: 2.2rem;
+            font-size: 2.1rem;
             font-weight: 800;
             letter-spacing: 3px;
             background: linear-gradient(135deg, #d4af37 0%, #997a15 100%);
@@ -185,7 +182,7 @@
         }
 
         .subtitle {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 700;
             letter-spacing: 6px;
             color: #8c6d15;
@@ -255,9 +252,11 @@
         .closing-mantra { font-size: 1.2rem; font-weight: 700; color: #c59b27; margin-top: 15px; }
 
         @media (max-width: 480px) {
-            .card { padding: 35px 20px; }
-            .title { font-size: 1.7rem; }
+            .card { padding: 15px 18px 30px 18px; }
+            .title { font-size: 1.6rem; }
             .name-card { font-size: 0.95rem; }
+            .ornament-img { margin: -20px auto -80px auto; }
+            .ornament-bottom-img { margin: -80px auto -20px auto; }
         }
     </style>
 </head>
@@ -265,7 +264,6 @@
 
     <!-- COVER BUKA UNDANGAN -->
     <div class="cover-overlay" id="coverOverlay">
-        <div class="symbol">ᬒᬵ</div>
         <h1 class="cover-title">UNDANGAN MEPANDES</h1>
         <p style="color: #666; margin-top: 5px;">Kepada Bapak/Ibu/Saudara/i</p>
         <button class="btn-open" onclick="openInvitation()">
@@ -287,11 +285,11 @@
     <div class="card">
         <div class="border-frame"></div>
 
-        <!-- ORNAMEN BALI ATAS DARI FILE ORNAMEN.PNG -->
+        <!-- ORNAMEN ATAS -->
         <img src="ornamen.png" alt="Ornamen Bali" class="ornament-img">
 
-        <div class="symbol">ᬒᬵ</div>
-        <h2 class="opening">Om Swastyastu</h2>
+        <!-- KONTEN UTAMA -->
+        <h2 class="opening">OM SWASTYASTU</h2>
         
         <p class="intro-text">
             Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa, kami mengundang Bapak/Ibu/Saudara/i pada Upacara Manusa Yadnya Mepandes (Potong Gigi) putra-putri kami:
@@ -331,7 +329,9 @@
 
         <h3 class="closing-mantra">Om Shanti, Shanti, Shanti Om</h3>
 
-        <!-- ORNAMEN BALI BAWAH DARI FILE ORNAMEN.PNG -->
+        <!-- AREA UNTUK ELEMEN BARU DI BAWAH BISA DISISIPKAN DI SINI -->
+
+        <!-- ORNAMEN BAWAH -->
         <img src="ornamen.png" alt="Ornamen Bali" class="ornament-bottom-img">
     </div>
 
