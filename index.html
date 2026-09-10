@@ -29,6 +29,46 @@
             min-height: 100vh;
             padding: 15px 10px;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ANIMASI BACKGROUND (PARTIKEL EMAS MELAYANG) */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(212,175,55,0.6) 0%, rgba(212,175,55,0) 70%);
+            border-radius: 50%;
+            animation: floatParticle linear infinite;
+        }
+
+        .particle:nth-child(1) { width: 12px; height: 12px; left: 10%; animation-duration: 8s; animation-delay: 0s; }
+        .particle:nth-child(2) { width: 20px; height: 20px; left: 25%; animation-duration: 12s; animation-delay: 2s; }
+        .particle:nth-child(3) { width: 15px; height: 15px; left: 45%; animation-duration: 10s; animation-delay: 4s; }
+        .particle:nth-child(4) { width: 25px; height: 25px; left: 70%; animation-duration: 14s; animation-delay: 1s; }
+        .particle:nth-child(5) { width: 10px; height: 10px; left: 85%; animation-duration: 9s; animation-delay: 3s; }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(105vh) scale(0.8);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.2);
+                opacity: 0;
+            }
         }
 
         /* OVERLAY BUKA UNDANGAN */
@@ -121,6 +161,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             border: none;
             overflow: hidden;
+            z-index: 1;
         }
 
         /* ORNAMEN ATAS */
@@ -288,6 +329,15 @@
 </head>
 <body>
 
+    <!-- PARTIKEL EMAS BACKGROUND -->
+    <div class="bg-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
     <!-- COVER BUKA UNDANGAN -->
     <div class="cover-overlay" id="coverOverlay">
         <h1 class="cover-title">UNDANGAN MEPANDES</h1>
@@ -316,30 +366,30 @@
         </div>
 
         <!-- KONTEN UTAMA -->
-        <h2 class="opening" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">OM SWASTYASTU</h2>
+        <h2 class="opening" data-aos="fade-up" data-aos-duration="800">OM SWASTYASTU</h2>
         
-        <p class="intro-text" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+        <p class="intro-text" data-aos="fade-up" data-aos-duration="800">
             Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa, kami mengundang Bapak/Ibu/Saudara/i pada Upacara Manusa Yadnya Mepandes (Potong Gigi) putra-putri kami:
         </p>
 
-        <div class="title-container" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="400">
+        <div class="title-container" data-aos="zoom-in" data-aos-duration="800">
             <h1 class="title">UPACARA MEPANDES</h1>
             <div class="subtitle">POTONG GIGI</div>
         </div>
 
         <div class="name-container">
-            <div class="name-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">NI KADEK WIWIK ASTUTIARI</div>
-            <div class="name-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">NI KOMANG APRIANTI</div>
-            <div class="name-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="700">I KETUT PANDE ADI PUTRA</div>
-            <div class="name-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="800">I GEDE PANDE WIRAGUNA</div>
+            <div class="name-card" data-aos="fade-up" data-aos-duration="600">NI KADEK WIWIK ASTUTIARI</div>
+            <div class="name-card" data-aos="fade-up" data-aos-duration="600">NI KOMANG APRIANTI</div>
+            <div class="name-card" data-aos="fade-up" data-aos-duration="600">I KETUT PANDE ADI PUTRA</div>
+            <div class="name-card" data-aos="fade-up" data-aos-duration="600">I GEDE PANDE WIRAGUNA</div>
         </div>
 
-        <div class="parents" data-aos="fade-up" data-aos-duration="1000">
+        <div class="parents" data-aos="fade-up" data-aos-duration="800">
             Putra-putri dari Pasangan:<br>
             <strong>I NYOMAN SADRA & NI LUH SULATRI</strong>
         </div>
 
-        <div class="info-box" data-aos="flip-up" data-aos-duration="1000">
+        <div class="info-box" data-aos="flip-up" data-aos-duration="800">
             <span class="info-title">WAKTU & LOKASI ACARA</span>
             📅 <strong>Hari/Tanggal:</strong> Selasa, 15 September 2026<br>
             ⏰ <strong>Waktu:</strong> 16:00 WITA – Selesai<br>
@@ -352,14 +402,14 @@
             </a>
         </div>
 
-        <p class="closing-text" data-aos="fade-up" data-aos-duration="1000">
+        <p class="closing-text" data-aos="fade-up" data-aos-duration="800">
             Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir memberikan doa restu. Terima kasih.
         </p>
 
-        <h3 class="closing-mantra" data-aos="fade-up" data-aos-duration="1000">Om Shanti, Shanti, Shanti Om</h3>
+        <h3 class="closing-mantra" data-aos="fade-up" data-aos-duration="800">Om Shanti, Shanti, Shanti Om</h3>
 
         <!-- ORNAMEN 2 BAWAH -->
-        <img src="ornamen2.png" alt="Ornamen Bali Bottom" class="ornament-bottom-img" data-aos="fade-up" data-aos-duration="1000">
+        <img src="ornamen2.png" alt="Ornamen Bali Bottom" class="ornament-bottom-img" data-aos="fade-up" data-aos-duration="800">
     </div>
 
     <!-- AOS ANIMATION SCRIPT -->
@@ -376,9 +426,10 @@
             coverOverlay.classList.add('hide');
             playAudio();
             
+            // Initializing AOS with once: false so elements animate every scroll
             AOS.init({
-                once: true,
-                duration: 900
+                once: false,
+                duration: 800
             });
         }
 
