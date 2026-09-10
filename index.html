@@ -109,7 +109,7 @@
             to { transform: rotate(360deg); }
         }
 
-        /* CARD UTAMA UNDANGAN - GARIS PINGGIR TELAH DIHAPUS */
+        /* CARD UTAMA UNDANGAN */
         .card {
             max-width: 500px;
             width: 100%;
@@ -119,7 +119,7 @@
             text-align: center;
             position: relative;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            border: none; /* Dihapus garis pinggir luar */
+            border: none;
             overflow: hidden;
         }
 
@@ -347,7 +347,7 @@
         </div>
 
         <div data-aos="zoom-in" data-aos-duration="800">
-            <a href="https://maps.google.com/?q=Br.+Bengkel+Antiga+Kelod+Gg.+Nagasari" target="_blank" class="btn-map">
+            <a href="https://maps.google.com/?q=-8.527722,115.489361" target="_blank" class="btn-map">
                 📍 Buka Petunjuk Google Maps
             </a>
         </div>
@@ -376,7 +376,6 @@
             coverOverlay.classList.add('hide');
             playAudio();
             
-            // Inisialisasi animasi AOS saat buka undangan
             AOS.init({
                 once: true,
                 duration: 900
